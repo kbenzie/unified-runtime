@@ -142,10 +142,13 @@ testing if unsupported by the adapter.
 Experimental Features
 =====================
 
-.. warning::
-    *   No requirement to maintain API/ABI stability of the feature.
 
-    *   No requirement to implement conformance tests for the feature.
+
+.. warning::
 
     *   No guarantees that the feature will experimental features may be
         replace, updated, or removed at any time.
+
+    *   No requirement to maintain API/ABI stability of the feature.
+
+    *   No requirement to implement conformance tests for the feature.
