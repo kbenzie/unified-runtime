@@ -1,0 +1,2547 @@
+
+
+==============================
+Core API
+==============================
+|full_name| Specification - Version |spec_version|
+
+ 
+
+ 
+
+Common
+============================================================
+* Enumerations
+
+
+    * :ref:`ur-result-t`
+    * :ref:`ur-structure-type-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-base-properties-t`
+    * :ref:`ur-base-desc-t`
+    * :ref:`ur-rect-offset-t`
+    * :ref:`ur-rect-region-t`
+
+
+
+
+Common Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-result-t:
+
+ur_result_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_result_t
+    :project: UnifiedRuntime
+
+
+.. _ur-structure-type-t:
+
+ur_structure_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_structure_type_t
+    :project: UnifiedRuntime
+
+ 
+Common Structures
+------------------------------------------------------------------------------
+
+.. _ur-base-properties-t:
+
+ur_base_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_base_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-base-desc-t:
+
+ur_base_desc_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_base_desc_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-rect-offset-t:
+
+ur_rect_offset_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_rect_offset_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-rect-region-t:
+
+ur_rect_region_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_rect_region_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Runtime
+============================================================
+* Functions
+
+
+    * :ref:`urInit`
+    * :ref:`urTearDown`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-device-init-flags-t`
+
+ 
+
+
+Runtime Functions
+------------------------------------------------------------------------------
+
+
+.. _urInit:
+
+urInit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urInit
+    :project: UnifiedRuntime
+
+
+.. _urTearDown:
+
+urTearDown
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urTearDown
+    :project: UnifiedRuntime
+
+
+
+Runtime Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-device-init-flags-t:
+
+ur_device_init_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_init_flag_t
+    :project: UnifiedRuntime
+
+ 
+
+ 
+
+Platform
+============================================================
+* Functions
+
+
+    * :ref:`urPlatformGet`
+    * :ref:`urPlatformGetInfo`
+    * :ref:`urPlatformGetApiVersion`
+    * :ref:`urPlatformGetNativeHandle`
+    * :ref:`urPlatformCreateWithNativeHandle`
+    * :ref:`urPlatformGetBackendOption`
+    * :ref:`urGetLastResult`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-platform-info-t`
+    * :ref:`ur-api-version-t`
+    * :ref:`ur-platform-backend-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-platform-native-properties-t`
+
+
+Platform Functions
+------------------------------------------------------------------------------
+
+
+.. _urPlatformGet:
+
+urPlatformGet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urPlatformGet
+    :project: UnifiedRuntime
+
+
+.. _urPlatformGetInfo:
+
+urPlatformGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urPlatformGetInfo
+    :project: UnifiedRuntime
+
+
+.. _urPlatformGetApiVersion:
+
+urPlatformGetApiVersion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urPlatformGetApiVersion
+    :project: UnifiedRuntime
+
+
+.. _urPlatformGetNativeHandle:
+
+urPlatformGetNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urPlatformGetNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urPlatformCreateWithNativeHandle:
+
+urPlatformCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urPlatformCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urPlatformGetBackendOption:
+
+urPlatformGetBackendOption
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urPlatformGetBackendOption
+    :project: UnifiedRuntime
+
+
+.. _urGetLastResult:
+
+urGetLastResult
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urGetLastResult
+    :project: UnifiedRuntime
+
+
+
+Platform Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-platform-info-t:
+
+ur_platform_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_platform_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-api-version-t:
+
+ur_api_version_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_api_version_t
+    :project: UnifiedRuntime
+
+
+.. _ur-platform-backend-t:
+
+ur_platform_backend_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_platform_backend_t
+    :project: UnifiedRuntime
+
+ 
+Platform Structures
+------------------------------------------------------------------------------
+
+.. _ur-platform-native-properties-t:
+
+ur_platform_native_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_platform_native_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Device
+============================================================
+* Functions
+
+
+    * :ref:`urDeviceGet`
+    * :ref:`urDeviceGetInfo`
+    * :ref:`urDeviceRetain`
+    * :ref:`urDeviceRelease`
+    * :ref:`urDevicePartition`
+    * :ref:`urDeviceSelectBinary`
+    * :ref:`urDeviceGetNativeHandle`
+    * :ref:`urDeviceCreateWithNativeHandle`
+    * :ref:`urDeviceGetGlobalTimestamps`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-device-type-t`
+    * :ref:`ur-device-info-t`
+    * :ref:`ur-device-partition-t`
+    * :ref:`ur-device-fp-capability-flags-t`
+    * :ref:`ur-device-mem-cache-type-t`
+    * :ref:`ur-device-local-mem-type-t`
+    * :ref:`ur-device-exec-capability-flags-t`
+    * :ref:`ur-device-affinity-domain-flags-t`
+    * :ref:`ur-memory-order-capability-flags-t`
+    * :ref:`ur-memory-scope-capability-flags-t`
+    * :ref:`ur-device-usm-access-capability-flags-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-device-binary-t`
+    * :ref:`ur-device-native-properties-t`
+
+
+Device Functions
+------------------------------------------------------------------------------
+
+
+.. _urDeviceGet:
+
+urDeviceGet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urDeviceGet
+    :project: UnifiedRuntime
+
+
+.. _urDeviceGetInfo:
+
+urDeviceGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urDeviceGetInfo
+    :project: UnifiedRuntime
+
+
+.. _urDeviceRetain:
+
+urDeviceRetain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urDeviceRetain
+    :project: UnifiedRuntime
+
+
+.. _urDeviceRelease:
+
+urDeviceRelease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urDeviceRelease
+    :project: UnifiedRuntime
+
+
+.. _urDevicePartition:
+
+urDevicePartition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urDevicePartition
+    :project: UnifiedRuntime
+
+
+.. _urDeviceSelectBinary:
+
+urDeviceSelectBinary
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urDeviceSelectBinary
+    :project: UnifiedRuntime
+
+
+.. _urDeviceGetNativeHandle:
+
+urDeviceGetNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urDeviceGetNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urDeviceCreateWithNativeHandle:
+
+urDeviceCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urDeviceCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urDeviceGetGlobalTimestamps:
+
+urDeviceGetGlobalTimestamps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urDeviceGetGlobalTimestamps
+    :project: UnifiedRuntime
+
+
+
+Device Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-device-type-t:
+
+ur_device_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_type_t
+    :project: UnifiedRuntime
+
+
+.. _ur-device-info-t:
+
+ur_device_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-device-partition-t:
+
+ur_device_partition_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_partition_t
+    :project: UnifiedRuntime
+
+
+.. _ur-device-fp-capability-flags-t:
+
+ur_device_fp_capability_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_fp_capability_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-device-mem-cache-type-t:
+
+ur_device_mem_cache_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_mem_cache_type_t
+    :project: UnifiedRuntime
+
+
+.. _ur-device-local-mem-type-t:
+
+ur_device_local_mem_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_local_mem_type_t
+    :project: UnifiedRuntime
+
+
+.. _ur-device-exec-capability-flags-t:
+
+ur_device_exec_capability_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_exec_capability_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-device-affinity-domain-flags-t:
+
+ur_device_affinity_domain_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_affinity_domain_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-memory-order-capability-flags-t:
+
+ur_memory_order_capability_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_memory_order_capability_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-memory-scope-capability-flags-t:
+
+ur_memory_scope_capability_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_memory_scope_capability_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-device-usm-access-capability-flags-t:
+
+ur_device_usm_access_capability_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_device_usm_access_capability_flag_t
+    :project: UnifiedRuntime
+
+ 
+Device Structures
+------------------------------------------------------------------------------
+
+.. _ur-device-binary-t:
+
+ur_device_binary_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_device_binary_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-device-native-properties-t:
+
+ur_device_native_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_device_native_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Context
+============================================================
+* Functions
+
+
+    * :ref:`urContextCreate`
+    * :ref:`urContextRetain`
+    * :ref:`urContextRelease`
+    * :ref:`urContextGetInfo`
+    * :ref:`urContextGetNativeHandle`
+    * :ref:`urContextCreateWithNativeHandle`
+    * :ref:`urContextSetExtendedDeleter`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-context-flags-t`
+    * :ref:`ur-context-info-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-context-properties-t`
+    * :ref:`ur-context-native-properties-t`
+
+
+Context Functions
+------------------------------------------------------------------------------
+
+
+.. _urContextCreate:
+
+urContextCreate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urContextCreate
+    :project: UnifiedRuntime
+
+
+.. _urContextRetain:
+
+urContextRetain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urContextRetain
+    :project: UnifiedRuntime
+
+
+.. _urContextRelease:
+
+urContextRelease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urContextRelease
+    :project: UnifiedRuntime
+
+
+.. _urContextGetInfo:
+
+urContextGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urContextGetInfo
+    :project: UnifiedRuntime
+
+
+.. _urContextGetNativeHandle:
+
+urContextGetNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urContextGetNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urContextCreateWithNativeHandle:
+
+urContextCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urContextCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urContextSetExtendedDeleter:
+
+urContextSetExtendedDeleter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urContextSetExtendedDeleter
+    :project: UnifiedRuntime
+
+
+
+Context Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-context-flags-t:
+
+ur_context_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_context_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-context-info-t:
+
+ur_context_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_context_info_t
+    :project: UnifiedRuntime
+
+ 
+Context Structures
+------------------------------------------------------------------------------
+
+.. _ur-context-properties-t:
+
+ur_context_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_context_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-context-native-properties-t:
+
+ur_context_native_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_context_native_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Memory
+============================================================
+* Functions
+
+
+    * :ref:`urMemImageCreate`
+    * :ref:`urMemBufferCreate`
+    * :ref:`urMemRetain`
+    * :ref:`urMemRelease`
+    * :ref:`urMemBufferPartition`
+    * :ref:`urMemGetNativeHandle`
+    * :ref:`urMemBufferCreateWithNativeHandle`
+    * :ref:`urMemImageCreateWithNativeHandle`
+    * :ref:`urMemGetInfo`
+    * :ref:`urMemImageGetInfo`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-mem-flags-t`
+    * :ref:`ur-mem-type-t`
+    * :ref:`ur-mem-info-t`
+    * :ref:`ur-image-channel-order-t`
+    * :ref:`ur-image-channel-type-t`
+    * :ref:`ur-image-info-t`
+    * :ref:`ur-buffer-create-type-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-image-format-t`
+    * :ref:`ur-image-desc-t`
+    * :ref:`ur-buffer-properties-t`
+    * :ref:`ur-buffer-channel-properties-t`
+    * :ref:`ur-buffer-alloc-location-properties-t`
+    * :ref:`ur-buffer-region-t`
+    * :ref:`ur-mem-native-properties-t`
+
+
+Memory Functions
+------------------------------------------------------------------------------
+
+
+.. _urMemImageCreate:
+
+urMemImageCreate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemImageCreate
+    :project: UnifiedRuntime
+
+
+.. _urMemBufferCreate:
+
+urMemBufferCreate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemBufferCreate
+    :project: UnifiedRuntime
+
+
+.. _urMemRetain:
+
+urMemRetain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemRetain
+    :project: UnifiedRuntime
+
+
+.. _urMemRelease:
+
+urMemRelease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemRelease
+    :project: UnifiedRuntime
+
+
+.. _urMemBufferPartition:
+
+urMemBufferPartition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemBufferPartition
+    :project: UnifiedRuntime
+
+
+.. _urMemGetNativeHandle:
+
+urMemGetNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemGetNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urMemBufferCreateWithNativeHandle:
+
+urMemBufferCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemBufferCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urMemImageCreateWithNativeHandle:
+
+urMemImageCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemImageCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urMemGetInfo:
+
+urMemGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemGetInfo
+    :project: UnifiedRuntime
+
+
+.. _urMemImageGetInfo:
+
+urMemImageGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urMemImageGetInfo
+    :project: UnifiedRuntime
+
+
+
+Memory Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-mem-flags-t:
+
+ur_mem_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_mem_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-mem-type-t:
+
+ur_mem_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_mem_type_t
+    :project: UnifiedRuntime
+
+
+.. _ur-mem-info-t:
+
+ur_mem_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_mem_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-image-channel-order-t:
+
+ur_image_channel_order_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_image_channel_order_t
+    :project: UnifiedRuntime
+
+
+.. _ur-image-channel-type-t:
+
+ur_image_channel_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_image_channel_type_t
+    :project: UnifiedRuntime
+
+
+.. _ur-image-info-t:
+
+ur_image_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_image_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-buffer-create-type-t:
+
+ur_buffer_create_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_buffer_create_type_t
+    :project: UnifiedRuntime
+
+ 
+Memory Structures
+------------------------------------------------------------------------------
+
+.. _ur-image-format-t:
+
+ur_image_format_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_image_format_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-image-desc-t:
+
+ur_image_desc_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_image_desc_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-buffer-properties-t:
+
+ur_buffer_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_buffer_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-buffer-channel-properties-t:
+
+ur_buffer_channel_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_buffer_channel_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-buffer-alloc-location-properties-t:
+
+ur_buffer_alloc_location_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_buffer_alloc_location_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-buffer-region-t:
+
+ur_buffer_region_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_buffer_region_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-mem-native-properties-t:
+
+ur_mem_native_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_mem_native_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Sampler
+============================================================
+* Functions
+
+
+    * :ref:`urSamplerCreate`
+    * :ref:`urSamplerRetain`
+    * :ref:`urSamplerRelease`
+    * :ref:`urSamplerGetInfo`
+    * :ref:`urSamplerGetNativeHandle`
+    * :ref:`urSamplerCreateWithNativeHandle`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-sampler-filter-mode-t`
+    * :ref:`ur-sampler-addressing-mode-t`
+    * :ref:`ur-sampler-info-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-sampler-desc-t`
+    * :ref:`ur-sampler-native-properties-t`
+
+
+Sampler Functions
+------------------------------------------------------------------------------
+
+
+.. _urSamplerCreate:
+
+urSamplerCreate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urSamplerCreate
+    :project: UnifiedRuntime
+
+
+.. _urSamplerRetain:
+
+urSamplerRetain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urSamplerRetain
+    :project: UnifiedRuntime
+
+
+.. _urSamplerRelease:
+
+urSamplerRelease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urSamplerRelease
+    :project: UnifiedRuntime
+
+
+.. _urSamplerGetInfo:
+
+urSamplerGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urSamplerGetInfo
+    :project: UnifiedRuntime
+
+
+.. _urSamplerGetNativeHandle:
+
+urSamplerGetNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urSamplerGetNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urSamplerCreateWithNativeHandle:
+
+urSamplerCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urSamplerCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+
+Sampler Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-sampler-filter-mode-t:
+
+ur_sampler_filter_mode_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_sampler_filter_mode_t
+    :project: UnifiedRuntime
+
+
+.. _ur-sampler-addressing-mode-t:
+
+ur_sampler_addressing_mode_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_sampler_addressing_mode_t
+    :project: UnifiedRuntime
+
+
+.. _ur-sampler-info-t:
+
+ur_sampler_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_sampler_info_t
+    :project: UnifiedRuntime
+
+ 
+Sampler Structures
+------------------------------------------------------------------------------
+
+.. _ur-sampler-desc-t:
+
+ur_sampler_desc_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_sampler_desc_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-sampler-native-properties-t:
+
+ur_sampler_native_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_sampler_native_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Usm
+============================================================
+* Functions
+
+
+    * :ref:`urUSMHostAlloc`
+    * :ref:`urUSMDeviceAlloc`
+    * :ref:`urUSMSharedAlloc`
+    * :ref:`urUSMFree`
+    * :ref:`urUSMGetMemAllocInfo`
+    * :ref:`urUSMPoolCreate`
+    * :ref:`urUSMPoolRetain`
+    * :ref:`urUSMPoolRelease`
+    * :ref:`urUSMPoolGetInfo`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-usm-host-mem-flags-t`
+    * :ref:`ur-usm-device-mem-flags-t`
+    * :ref:`ur-usm-pool-flags-t`
+    * :ref:`ur-usm-type-t`
+    * :ref:`ur-usm-alloc-info-t`
+    * :ref:`ur-usm-advice-flags-t`
+    * :ref:`ur-usm-pool-info-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-usm-desc-t`
+    * :ref:`ur-usm-host-desc-t`
+    * :ref:`ur-usm-device-desc-t`
+    * :ref:`ur-usm-pool-desc-t`
+    * :ref:`ur-usm-pool-limits-desc-t`
+
+
+Usm Functions
+------------------------------------------------------------------------------
+
+
+.. _urUSMHostAlloc:
+
+urUSMHostAlloc
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urUSMHostAlloc
+    :project: UnifiedRuntime
+
+
+.. _urUSMDeviceAlloc:
+
+urUSMDeviceAlloc
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urUSMDeviceAlloc
+    :project: UnifiedRuntime
+
+
+.. _urUSMSharedAlloc:
+
+urUSMSharedAlloc
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urUSMSharedAlloc
+    :project: UnifiedRuntime
+
+
+.. _urUSMFree:
+
+urUSMFree
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urUSMFree
+    :project: UnifiedRuntime
+
+
+.. _urUSMGetMemAllocInfo:
+
+urUSMGetMemAllocInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urUSMGetMemAllocInfo
+    :project: UnifiedRuntime
+
+
+.. _urUSMPoolCreate:
+
+urUSMPoolCreate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urUSMPoolCreate
+    :project: UnifiedRuntime
+
+
+.. _urUSMPoolRetain:
+
+urUSMPoolRetain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urUSMPoolRetain
+    :project: UnifiedRuntime
+
+
+.. _urUSMPoolRelease:
+
+urUSMPoolRelease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urUSMPoolRelease
+    :project: UnifiedRuntime
+
+
+.. _urUSMPoolGetInfo:
+
+urUSMPoolGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urUSMPoolGetInfo
+    :project: UnifiedRuntime
+
+
+
+Usm Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-usm-host-mem-flags-t:
+
+ur_usm_host_mem_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_usm_host_mem_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-usm-device-mem-flags-t:
+
+ur_usm_device_mem_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_usm_device_mem_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-usm-pool-flags-t:
+
+ur_usm_pool_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_usm_pool_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-usm-type-t:
+
+ur_usm_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_usm_type_t
+    :project: UnifiedRuntime
+
+
+.. _ur-usm-alloc-info-t:
+
+ur_usm_alloc_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_usm_alloc_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-usm-advice-flags-t:
+
+ur_usm_advice_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_usm_advice_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-usm-pool-info-t:
+
+ur_usm_pool_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_usm_pool_info_t
+    :project: UnifiedRuntime
+
+ 
+Usm Structures
+------------------------------------------------------------------------------
+
+.. _ur-usm-desc-t:
+
+ur_usm_desc_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_usm_desc_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-usm-host-desc-t:
+
+ur_usm_host_desc_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_usm_host_desc_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-usm-device-desc-t:
+
+ur_usm_device_desc_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_usm_device_desc_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-usm-pool-desc-t:
+
+ur_usm_pool_desc_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_usm_pool_desc_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-usm-pool-limits-desc-t:
+
+ur_usm_pool_limits_desc_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_usm_pool_limits_desc_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Program
+============================================================
+* Functions
+
+
+    * :ref:`urProgramCreateWithIL`
+    * :ref:`urProgramCreateWithBinary`
+    * :ref:`urProgramBuild`
+    * :ref:`urProgramCompile`
+    * :ref:`urProgramLink`
+    * :ref:`urProgramRetain`
+    * :ref:`urProgramRelease`
+    * :ref:`urProgramGetFunctionPointer`
+    * :ref:`urProgramGetInfo`
+    * :ref:`urProgramGetBuildInfo`
+    * :ref:`urProgramSetSpecializationConstants`
+    * :ref:`urProgramGetNativeHandle`
+    * :ref:`urProgramCreateWithNativeHandle`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-program-metadata-type-t`
+    * :ref:`ur-program-info-t`
+    * :ref:`ur-program-build-status-t`
+    * :ref:`ur-program-binary-type-t`
+    * :ref:`ur-program-build-info-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-program-metadata-value-t`
+    * :ref:`ur-program-metadata-t`
+    * :ref:`ur-program-properties-t`
+    * :ref:`ur-specialization-constant-info-t`
+    * :ref:`ur-program-native-properties-t`
+
+
+Program Functions
+------------------------------------------------------------------------------
+
+
+.. _urProgramCreateWithIL:
+
+urProgramCreateWithIL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramCreateWithIL
+    :project: UnifiedRuntime
+
+
+.. _urProgramCreateWithBinary:
+
+urProgramCreateWithBinary
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramCreateWithBinary
+    :project: UnifiedRuntime
+
+
+.. _urProgramBuild:
+
+urProgramBuild
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramBuild
+    :project: UnifiedRuntime
+
+
+.. _urProgramCompile:
+
+urProgramCompile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramCompile
+    :project: UnifiedRuntime
+
+
+.. _urProgramLink:
+
+urProgramLink
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramLink
+    :project: UnifiedRuntime
+
+
+.. _urProgramRetain:
+
+urProgramRetain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramRetain
+    :project: UnifiedRuntime
+
+
+.. _urProgramRelease:
+
+urProgramRelease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramRelease
+    :project: UnifiedRuntime
+
+
+.. _urProgramGetFunctionPointer:
+
+urProgramGetFunctionPointer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramGetFunctionPointer
+    :project: UnifiedRuntime
+
+
+.. _urProgramGetInfo:
+
+urProgramGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramGetInfo
+    :project: UnifiedRuntime
+
+
+.. _urProgramGetBuildInfo:
+
+urProgramGetBuildInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramGetBuildInfo
+    :project: UnifiedRuntime
+
+
+.. _urProgramSetSpecializationConstants:
+
+urProgramSetSpecializationConstants
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramSetSpecializationConstants
+    :project: UnifiedRuntime
+
+
+.. _urProgramGetNativeHandle:
+
+urProgramGetNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramGetNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urProgramCreateWithNativeHandle:
+
+urProgramCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urProgramCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+
+Program Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-program-metadata-type-t:
+
+ur_program_metadata_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_program_metadata_type_t
+    :project: UnifiedRuntime
+
+
+.. _ur-program-info-t:
+
+ur_program_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_program_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-program-build-status-t:
+
+ur_program_build_status_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_program_build_status_t
+    :project: UnifiedRuntime
+
+
+.. _ur-program-binary-type-t:
+
+ur_program_binary_type_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_program_binary_type_t
+    :project: UnifiedRuntime
+
+
+.. _ur-program-build-info-t:
+
+ur_program_build_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_program_build_info_t
+    :project: UnifiedRuntime
+
+ 
+Program Structures
+------------------------------------------------------------------------------
+
+.. _ur-program-metadata-value-t:
+
+ur_program_metadata_value_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenunion:: ur_program_metadata_value_t
+    :project: UnifiedRuntime
+
+.. _ur-program-metadata-t:
+
+ur_program_metadata_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_program_metadata_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-program-properties-t:
+
+ur_program_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_program_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-specialization-constant-info-t:
+
+ur_specialization_constant_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_specialization_constant_info_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-program-native-properties-t:
+
+ur_program_native_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_program_native_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Kernel
+============================================================
+* Functions
+
+
+    * :ref:`urKernelCreate`
+    * :ref:`urKernelSetArgValue`
+    * :ref:`urKernelSetArgLocal`
+    * :ref:`urKernelGetInfo`
+    * :ref:`urKernelGetGroupInfo`
+    * :ref:`urKernelGetSubGroupInfo`
+    * :ref:`urKernelRetain`
+    * :ref:`urKernelRelease`
+    * :ref:`urKernelSetArgPointer`
+    * :ref:`urKernelSetExecInfo`
+    * :ref:`urKernelSetArgSampler`
+    * :ref:`urKernelSetArgMemObj`
+    * :ref:`urKernelSetSpecializationConstants`
+    * :ref:`urKernelGetNativeHandle`
+    * :ref:`urKernelCreateWithNativeHandle`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-kernel-info-t`
+    * :ref:`ur-kernel-group-info-t`
+    * :ref:`ur-kernel-sub-group-info-t`
+    * :ref:`ur-kernel-cache-config-t`
+    * :ref:`ur-kernel-exec-info-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-kernel-native-properties-t`
+
+
+Kernel Functions
+------------------------------------------------------------------------------
+
+
+.. _urKernelCreate:
+
+urKernelCreate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelCreate
+    :project: UnifiedRuntime
+
+
+.. _urKernelSetArgValue:
+
+urKernelSetArgValue
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelSetArgValue
+    :project: UnifiedRuntime
+
+
+.. _urKernelSetArgLocal:
+
+urKernelSetArgLocal
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelSetArgLocal
+    :project: UnifiedRuntime
+
+
+.. _urKernelGetInfo:
+
+urKernelGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelGetInfo
+    :project: UnifiedRuntime
+
+
+.. _urKernelGetGroupInfo:
+
+urKernelGetGroupInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelGetGroupInfo
+    :project: UnifiedRuntime
+
+
+.. _urKernelGetSubGroupInfo:
+
+urKernelGetSubGroupInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelGetSubGroupInfo
+    :project: UnifiedRuntime
+
+
+.. _urKernelRetain:
+
+urKernelRetain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelRetain
+    :project: UnifiedRuntime
+
+
+.. _urKernelRelease:
+
+urKernelRelease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelRelease
+    :project: UnifiedRuntime
+
+
+.. _urKernelSetArgPointer:
+
+urKernelSetArgPointer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelSetArgPointer
+    :project: UnifiedRuntime
+
+
+.. _urKernelSetExecInfo:
+
+urKernelSetExecInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelSetExecInfo
+    :project: UnifiedRuntime
+
+
+.. _urKernelSetArgSampler:
+
+urKernelSetArgSampler
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelSetArgSampler
+    :project: UnifiedRuntime
+
+
+.. _urKernelSetArgMemObj:
+
+urKernelSetArgMemObj
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelSetArgMemObj
+    :project: UnifiedRuntime
+
+
+.. _urKernelSetSpecializationConstants:
+
+urKernelSetSpecializationConstants
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelSetSpecializationConstants
+    :project: UnifiedRuntime
+
+
+.. _urKernelGetNativeHandle:
+
+urKernelGetNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelGetNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urKernelCreateWithNativeHandle:
+
+urKernelCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urKernelCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+
+Kernel Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-kernel-info-t:
+
+ur_kernel_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_kernel_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-kernel-group-info-t:
+
+ur_kernel_group_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_kernel_group_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-kernel-sub-group-info-t:
+
+ur_kernel_sub_group_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_kernel_sub_group_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-kernel-cache-config-t:
+
+ur_kernel_cache_config_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_kernel_cache_config_t
+    :project: UnifiedRuntime
+
+
+.. _ur-kernel-exec-info-t:
+
+ur_kernel_exec_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_kernel_exec_info_t
+    :project: UnifiedRuntime
+
+ 
+Kernel Structures
+------------------------------------------------------------------------------
+
+.. _ur-kernel-native-properties-t:
+
+ur_kernel_native_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_kernel_native_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Queue
+============================================================
+* Functions
+
+
+    * :ref:`urQueueGetInfo`
+    * :ref:`urQueueCreate`
+    * :ref:`urQueueRetain`
+    * :ref:`urQueueRelease`
+    * :ref:`urQueueGetNativeHandle`
+    * :ref:`urQueueCreateWithNativeHandle`
+    * :ref:`urQueueFinish`
+    * :ref:`urQueueFlush`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-queue-info-t`
+    * :ref:`ur-queue-flags-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-queue-properties-t`
+    * :ref:`ur-queue-index-properties-t`
+    * :ref:`ur-queue-native-desc-t`
+    * :ref:`ur-queue-native-properties-t`
+
+
+Queue Functions
+------------------------------------------------------------------------------
+
+
+.. _urQueueGetInfo:
+
+urQueueGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urQueueGetInfo
+    :project: UnifiedRuntime
+
+
+.. _urQueueCreate:
+
+urQueueCreate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urQueueCreate
+    :project: UnifiedRuntime
+
+
+.. _urQueueRetain:
+
+urQueueRetain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urQueueRetain
+    :project: UnifiedRuntime
+
+
+.. _urQueueRelease:
+
+urQueueRelease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urQueueRelease
+    :project: UnifiedRuntime
+
+
+.. _urQueueGetNativeHandle:
+
+urQueueGetNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urQueueGetNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urQueueCreateWithNativeHandle:
+
+urQueueCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urQueueCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urQueueFinish:
+
+urQueueFinish
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urQueueFinish
+    :project: UnifiedRuntime
+
+
+.. _urQueueFlush:
+
+urQueueFlush
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urQueueFlush
+    :project: UnifiedRuntime
+
+
+
+Queue Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-queue-info-t:
+
+ur_queue_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_queue_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-queue-flags-t:
+
+ur_queue_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_queue_flag_t
+    :project: UnifiedRuntime
+
+ 
+Queue Structures
+------------------------------------------------------------------------------
+
+.. _ur-queue-properties-t:
+
+ur_queue_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_queue_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-queue-index-properties-t:
+
+ur_queue_index_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_queue_index_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-queue-native-desc-t:
+
+ur_queue_native_desc_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_queue_native_desc_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+.. _ur-queue-native-properties-t:
+
+ur_queue_native_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_queue_native_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+Event
+============================================================
+* Functions
+
+
+    * :ref:`urEventGetInfo`
+    * :ref:`urEventGetProfilingInfo`
+    * :ref:`urEventWait`
+    * :ref:`urEventRetain`
+    * :ref:`urEventRelease`
+    * :ref:`urEventGetNativeHandle`
+    * :ref:`urEventCreateWithNativeHandle`
+    * :ref:`urEventSetCallback`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-command-t`
+    * :ref:`ur-event-status-t`
+    * :ref:`ur-event-info-t`
+    * :ref:`ur-profiling-info-t`
+    * :ref:`ur-execution-info-t`
+
+ 
+* Structures
+
+
+    * :ref:`ur-event-native-properties-t`
+
+
+Event Functions
+------------------------------------------------------------------------------
+
+
+.. _urEventGetInfo:
+
+urEventGetInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEventGetInfo
+    :project: UnifiedRuntime
+
+
+.. _urEventGetProfilingInfo:
+
+urEventGetProfilingInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEventGetProfilingInfo
+    :project: UnifiedRuntime
+
+
+.. _urEventWait:
+
+urEventWait
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEventWait
+    :project: UnifiedRuntime
+
+
+.. _urEventRetain:
+
+urEventRetain
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEventRetain
+    :project: UnifiedRuntime
+
+
+.. _urEventRelease:
+
+urEventRelease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEventRelease
+    :project: UnifiedRuntime
+
+
+.. _urEventGetNativeHandle:
+
+urEventGetNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEventGetNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urEventCreateWithNativeHandle:
+
+urEventCreateWithNativeHandle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEventCreateWithNativeHandle
+    :project: UnifiedRuntime
+
+
+.. _urEventSetCallback:
+
+urEventSetCallback
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEventSetCallback
+    :project: UnifiedRuntime
+
+
+
+Event Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-command-t:
+
+ur_command_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_command_t
+    :project: UnifiedRuntime
+
+
+.. _ur-event-status-t:
+
+ur_event_status_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_event_status_t
+    :project: UnifiedRuntime
+
+
+.. _ur-event-info-t:
+
+ur_event_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_event_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-profiling-info-t:
+
+ur_profiling_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_profiling_info_t
+    :project: UnifiedRuntime
+
+
+.. _ur-execution-info-t:
+
+ur_execution_info_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_execution_info_t
+    :project: UnifiedRuntime
+
+ 
+Event Structures
+------------------------------------------------------------------------------
+
+.. _ur-event-native-properties-t:
+
+ur_event_native_properties_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenstruct:: ur_event_native_properties_t
+    :project: UnifiedRuntime
+    :members:
+    :undoc-members:
+
+
+ 
+
+ 
+
+Registry
+============================================================
+* Enumerations
+
+
+    * :ref:`ur-function-t`
+
+ 
+
+
+
+
+Registry Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-function-t:
+
+ur_function_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_function_t
+    :project: UnifiedRuntime
+
+ 
+
+ 
+
+Enqueue
+============================================================
+* Functions
+
+
+    * :ref:`urEnqueueKernelLaunch`
+    * :ref:`urEnqueueEventsWait`
+    * :ref:`urEnqueueEventsWaitWithBarrier`
+    * :ref:`urEnqueueMemBufferRead`
+    * :ref:`urEnqueueMemBufferWrite`
+    * :ref:`urEnqueueMemBufferReadRect`
+    * :ref:`urEnqueueMemBufferWriteRect`
+    * :ref:`urEnqueueMemBufferCopy`
+    * :ref:`urEnqueueMemBufferCopyRect`
+    * :ref:`urEnqueueMemBufferFill`
+    * :ref:`urEnqueueMemImageRead`
+    * :ref:`urEnqueueMemImageWrite`
+    * :ref:`urEnqueueMemImageCopy`
+    * :ref:`urEnqueueMemBufferMap`
+    * :ref:`urEnqueueMemUnmap`
+    * :ref:`urEnqueueUSMFill`
+    * :ref:`urEnqueueUSMMemcpy`
+    * :ref:`urEnqueueUSMPrefetch`
+    * :ref:`urEnqueueUSMAdvise`
+    * :ref:`urEnqueueUSMFill2D`
+    * :ref:`urEnqueueUSMMemcpy2D`
+    * :ref:`urEnqueueDeviceGlobalVariableWrite`
+    * :ref:`urEnqueueDeviceGlobalVariableRead`
+    * :ref:`urEnqueueReadHostPipe`
+    * :ref:`urEnqueueWriteHostPipe`
+
+ 
+* Enumerations
+
+
+    * :ref:`ur-map-flags-t`
+    * :ref:`ur-usm-migration-flags-t`
+
+ 
+
+
+Enqueue Functions
+------------------------------------------------------------------------------
+
+
+.. _urEnqueueKernelLaunch:
+
+urEnqueueKernelLaunch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueKernelLaunch
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueEventsWait:
+
+urEnqueueEventsWait
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueEventsWait
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueEventsWaitWithBarrier:
+
+urEnqueueEventsWaitWithBarrier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueEventsWaitWithBarrier
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemBufferRead:
+
+urEnqueueMemBufferRead
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemBufferRead
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemBufferWrite:
+
+urEnqueueMemBufferWrite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemBufferWrite
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemBufferReadRect:
+
+urEnqueueMemBufferReadRect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemBufferReadRect
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemBufferWriteRect:
+
+urEnqueueMemBufferWriteRect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemBufferWriteRect
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemBufferCopy:
+
+urEnqueueMemBufferCopy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemBufferCopy
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemBufferCopyRect:
+
+urEnqueueMemBufferCopyRect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemBufferCopyRect
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemBufferFill:
+
+urEnqueueMemBufferFill
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemBufferFill
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemImageRead:
+
+urEnqueueMemImageRead
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemImageRead
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemImageWrite:
+
+urEnqueueMemImageWrite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemImageWrite
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemImageCopy:
+
+urEnqueueMemImageCopy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemImageCopy
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemBufferMap:
+
+urEnqueueMemBufferMap
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemBufferMap
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueMemUnmap:
+
+urEnqueueMemUnmap
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueMemUnmap
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueUSMFill:
+
+urEnqueueUSMFill
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueUSMFill
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueUSMMemcpy:
+
+urEnqueueUSMMemcpy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueUSMMemcpy
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueUSMPrefetch:
+
+urEnqueueUSMPrefetch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueUSMPrefetch
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueUSMAdvise:
+
+urEnqueueUSMAdvise
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueUSMAdvise
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueUSMFill2D:
+
+urEnqueueUSMFill2D
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueUSMFill2D
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueUSMMemcpy2D:
+
+urEnqueueUSMMemcpy2D
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueUSMMemcpy2D
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueDeviceGlobalVariableWrite:
+
+urEnqueueDeviceGlobalVariableWrite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueDeviceGlobalVariableWrite
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueDeviceGlobalVariableRead:
+
+urEnqueueDeviceGlobalVariableRead
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueDeviceGlobalVariableRead
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueReadHostPipe:
+
+urEnqueueReadHostPipe
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueReadHostPipe
+    :project: UnifiedRuntime
+
+
+.. _urEnqueueWriteHostPipe:
+
+urEnqueueWriteHostPipe
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenfunction:: urEnqueueWriteHostPipe
+    :project: UnifiedRuntime
+
+
+
+Enqueue Enums
+------------------------------------------------------------------------------
+
+
+.. _ur-map-flags-t:
+
+ur_map_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_map_flag_t
+    :project: UnifiedRuntime
+
+
+.. _ur-usm-migration-flags-t:
+
+ur_usm_migration_flags_t
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. doxygenenum:: ur_usm_migration_flag_t
+    :project: UnifiedRuntime
+
+ 
+

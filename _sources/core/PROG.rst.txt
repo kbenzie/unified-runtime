@@ -1,0 +1,263 @@
+
+
+.. _core-programming-guide:
+
+========================
+ Programming Guide
+========================
+
+Platforms and Devices
+======================
+
+The oneAPI Unified Runtime API architecture exposes both physical and logical abstraction of the underlying devices capabilities.
+The device, sub-device and memory are exposed at physical level while command queues, events and
+synchronization methods are defined as logical entities.
+All logical entities will be bound to device level physical capabilities.
+
+Device discovery APIs enumerate the accelerators functional features.
+These APIs provide interface to query information like compute unit count within the device or sub device, 
+available memory and affinity to the compute, user managed cache size and work submission command queues.
+
+Platforms
+---------
+
+A platform object represents a collection of physical devices in the system accessed by the same driver.
+
+- The application may query the number of platforms installed on the system, and their respective handles, using :ref:`urPlatformGet`\.
+- More than one platform may be available in the system. For example, one platform may support two GPUs from one vendor, another platform supports a GPU from a different vendor, and finally a different platform may support an FPGA.
+- Platform objects are read-only, global constructs. i.e. multiple calls to :ref:`urPlatformGet` will return identical platform handles.
+- A platform handle is primarily used during device discovery and during creation and management of contexts.
+
+Device
+------
+
+A device object represents a physical device in the system that supports the platform.
+
+- The application may query the number devices supported by a platform, and their respective handles, using :ref:`urDeviceGet`\.
+- Device objects are read-only, global constructs. i.e. multiple calls to :ref:`urDeviceGet` will return identical device handles.
+- A device handle is primarily used during creation and management of resources that are specific to a device.
+- Device may expose sub-devices that allow finer-grained control of physical or logical partitions of a device.
+
+The following diagram illustrates the relationship between the platform, device, context and other objects described in this document.
+
+.. image:: ../images/runtime_object_hier.png
+
+Initialization and Discovery
+----------------------------
+
+.. parsed-literal::
+
+    // Discover all the platform instances
+    uint32_t platformCount = 0;
+    :ref:`urPlatformGet`\(0, nullptr, &platformCount);
+
+    std::vector<ur_platform_handle_t> platforms(platformCount);
+    :ref:`urPlatformGet`\(platform.size(), platforms.data(), &platformCount);
+
+    // Get number of total GPU devices in the platform
+    uint32_t deviceCount = 0;
+    :ref:`urDeviceGet`\(platforms[0], :ref:`UR_DEVICE_TYPE_GPU <ur-device-type-t>`\, &deviceCount, nullptr, nullptr);
+
+    // Get handles of all GPU devices in the platform
+    std::vector<ur_device_handle_t> devices(deviceCount);
+    :ref:`urDeviceGet`\(platforms[0], :ref:`UR_DEVICE_TYPE_GPU <ur-device-type-t>`\, &deviceCount, devices.data(), devices.size());
+
+Device handle lifetime
+----------------------
+
+The device objects are reference-counted, and there are :ref:`urDeviceRetain` and :ref:`urDeviceRelease`\.
+The ref-count of a device is automatically incremented when device is obtained by :ref:`urDeviceGet`\.
+After device is no longer needed to the application it must call to :ref:`urDeviceRelease`\.
+When ref-count of the underlying device handle becomes zero then that device object is deleted.
+Note, that besides the application itself, the Unified Runtime may increment and decrement ref-count on its own.
+So, after the call to :ref:`urDeviceRelease` below, the device may stay alive until other
+objects attached to it, like command-queues, are deleted. But application may not use the device
+after it released its own reference.
+
+.. parsed-literal::
+
+    // Get the handle of the first GPU device in the platform
+    ur_device_handle_t hDevice;
+    uint32_t deviceCount = 1;
+    :ref:`urDeviceGet`\(hPlatforms[0], :ref:`UR_DEVICE_TYPE_GPU <ur-device-type-t>`\, &deviceCount, &hDevice, 1);
+    :ref:`urDeviceRelease`\(hDevice);
+
+
+Retrieve info about device
+--------------------------
+
+The :ref:`urDeviceGetInfo` can return various information about the device.
+In case where the info size is only known at runtime then two calls are needed, where first will retrieve the size.
+
+.. parsed-literal::
+
+    // Size is known beforehand
+    :ref:`ur-device-type-t` deviceType;
+    :ref:`urDeviceGetInfo`\(hDevice, :ref:`UR_DEVICE_INFO_TYPE <ur-device-info-t>`\, sizeof(:ref:`ur-device-type-t`\), &deviceType, nullptr);
+
+    // Size is only known at runtime
+    size_t infoSize;
+    :ref:`urDeviceGetInfo`\(hDevice, :ref:`UR_DEVICE_INFO_NAME <ur-device-info-t>`\, 0, &infoSize, nullptr);
+    
+    std::string deviceName;
+    DeviceName.resize(infoSize);
+    :ref:`urDeviceGetInfo`\(hDevice, :ref:`UR_DEVICE_INFO_NAME <ur-device-info-t>`\, infoSize, deviceName.data(), nullptr);
+
+Device partitioning into sub-devices
+------------------------------------
+
+The :ref:`urDevicePartition` could partition a device into sub-device. The exact representation and
+characteristics of the sub-devices are device specific, but normally they each represent a
+fixed part of the parent device, which can explicitly be programmed individually.
+
+.. parsed-literal::
+
+    ur_device_handle_t hDevice;
+    ur_device_partition_property_t properties[] = { 
+               :ref:`UR_DEVICE_PARTITION_BY_AFFINITY_DOMAIN <ur-device-partition-t>`\,
+               :ref:`UR_DEVICE_AFFINITY_DOMAIN_FLAG_NEXT_PARTITIONABLE <ur-device-affinity-domain-flags-t>`\,
+               0};
+
+    uint32_t count = 0;
+    std::vector<ur_device_handle_t> subDevices;
+    :ref:`urDevicePartition`\(hDevice, &properties, &count, nullptr, nullptr);
+
+    if (count > 0) {
+        subDevices.resize(count);
+        :ref:`urDevicePartition`\(Device, &properties, &count, &subDevices.data(), nullptr);
+    }
+
+The returned sub-devices may be requested for further partitioning into sub-sub-devices, and so on.
+An implementation would return "0" in the count if no further partitioning is supported.
+
+.. parsed-literal::
+
+    uint32_t count = 1;
+    ur_device_handle_t hSubSubDevice;
+    :ref:`urDevicePartition`\(subDevices[0], properties, &count, &hSubSubDevice, nullptr);
+
+Contexts
+========
+
+Contexts are serving the purpose of resources sharing (between devices in the same context),
+and resources isolation (resources do not cross context boundaries). Resources such as memory allocations,
+events, and programs are explicitly created against a context. A trivial work with context looks like this:
+
+.. parsed-literal::
+
+    uint32_t deviceCount = 1;
+    ur_device_handle_t hDevice;
+    :ref:`urDeviceGet`\(hPlatform, :ref:`UR_DEVICE_TYPE_GPU <ur-device-type-t>`\, &deviceCount, &hDevice, nullptr);
+
+    // Create a context
+    ur_context_handle_t hContext;
+    :ref:`urContextCreate`\(1, &hDevice, nullptr, &hContext);
+
+    // Operations on this context
+    // ...
+
+    // Release the context handle
+    :ref:`urContextRelease`\(hContext);    
+
+Programs and Kernels
+====================
+
+There are two constructs we need to prepare code for execution on the device:
+
+* Programs serve as containers for device code. They typically encapsulate a
+  collection of functions and global variables represented in an intermediate
+  language, and one or more device-native binaries compiled from that
+  collection.
+* Kernels represent a handle to a function within a program that can be
+  launched on a device.
+
+
+Programs
+--------
+
+Programs can be constructed with an intermediate language binary or a
+device-native binary. Programs constructed with IL must be further compiled
+through either :ref:`urProgramCompile` and :ref:`urProgramLink` or :ref:`urProgramBuild`
+before they can be used to create a kernel object.
+
+.. parsed-literal::
+
+    // Create a program with IL
+    ur_program_handle_t hProgram;
+    :ref:`urProgramCreateWithIL`\(hContext, ILBin, ILBinSize, nullptr, &hProgram);
+
+    // Build the program.
+    :ref:`urProgramBuild`\(hContext, hProgram, nullptr);
+
+The diagram below shows the possible paths to obtaining a program that can be
+used to create a kernel:
+
+.. image:: ../images/programs.png
+
+Kernels
+-------
+
+A Kernel is a reference to a kernel within a program and it supports both
+explicit and implicit kernel arguments along with data needed for launch.
+
+.. parsed-literal::
+
+    // Create kernel object from program
+    ur_kernel_handle_t hKernel;
+    :ref:`urKernelCreate`\(hProgram, "addVectors", &hKernel);
+    :ref:`urKernelSetArgMemObj`\(hKernel, 0, A);
+    :ref:`urKernelSetArgMemObj`\(hKernel, 1, B);
+    :ref:`urKernelSetArgMemObj`\(hKernel, 2, C);
+
+Queue and Enqueue
+=================
+
+A queue object represents a logic input stream to a device. Kernels 
+and commands are submitted to queue for execution using Equeue commands:
+such as :ref:`urEnqueueKernelLaunch`\, :ref:`urEnqueueMemBufferWrite`\. Enqueued kernels
+and commands can be executed in order or out of order depending on the
+queue's property :ref:`UR_QUEUE_FLAG_OUT_OF_ORDER_EXEC_MODE_ENABLE <ur-queue-flags-t>` when the
+queue is created.
+
+.. parsed-literal::
+
+    // Create an out of order queue for hDevice in hContext
+    ur_queue_handle_t hQueue;
+    :ref:`urQueueCreate`\(hContext, hDevice, :ref:`UR_QUEUE_FLAG_OUT_OF_ORDER_EXEC_MODE_ENABLE <ur-queue-flags-t>`\, &hQueue);
+
+    // Lanuch a kernel with 3D workspace partitioning
+    const uint32_t nDim = 3;
+    const size_t gWorkOffset = {0, 0, 0};
+    const size_t gWorkSize = {128, 128, 128};
+    const size_t lWorkSize = {1, 8, 8}; 
+    :ref:`urEnqueueKernelLaunch`\(hQueue, hKernel, nDim, gWorkOffset, gWorkSize, lWorkSize, 0, nullptr, nullptr);
+
+Queue object lifetime
+---------------------
+
+Queue objects are reference-counted. If an application or thread needs to
+retain access to a queue created by another application or thread, it can call
+:ref:`urQueueRetain`\. An application must call :ref:`urQueueRelease`
+when a queue object is no longer needed. When a queue object's reference count becomes
+zero, it is deleted by the runtime.
+
+Native Driver Access
+----------------------------------
+
+The runtime API provides accessors for native handles.
+For example, given a ur_program_handle_t, we can
+call :ref:`urProgramGetNativeHandle` to retrieve a ur_native_handle_t.
+We can then leverage a platform extension to convert the
+native handle to a driver handle. For example, OpenCL platform
+may expose an extension :ref:`urProgramCreateWithNativeHandle` to retrieve
+a cl_program.
+
+Memory Pooling
+----------------------------------
+
+The :ref:`urUSMPoolCreate` function explicitly creates memory pools and returns ur_usm_pool_handle_t.
+ur_usm_pool_handle_t can be passed to :ref:`urUSMDeviceAlloc`\, :ref:`urUSMHostAlloc` and :ref:`urUSMSharedAlloc`
+through :ref:`ur-usm-desc-t` structure. Allocations that specify different pool handles must be
+isolated and not reside on the same page. Memory pool is subject to limits specified during pool creation.
+
+Even if no ur_usm_pool_handle_t is provided to an allocation function, each adapter may still perform memory pooling.

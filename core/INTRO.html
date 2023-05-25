@@ -1,0 +1,782 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction &#8212; Unified Runtime Specification  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Programming Guide" href="PROG.html" />
+    <link rel="prev" title="oneAPI Unified Runtime: 0.6" href="../index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Unified Runtime Specification  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PROG.html">
+   Programming Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CONTRIB.html">
+   Contribution Guide
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../api.html">
+   API Documentation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api.html">
+     Core API
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/core/INTRO.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objective">
+   Objective
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fundamentals">
+   Fundamentals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#terminology">
+     Terminology
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naming-convention">
+     Naming Convention
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#versioning">
+     Versioning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-handling">
+     Error Handling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multithreading-and-concurrency">
+     Multithreading and Concurrency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-binary-interface">
+     Application Binary Interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tracing">
+     Tracing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logging">
+     Logging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#environment-variables">
+     Environment Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objective">
+   Objective
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fundamentals">
+   Fundamentals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#terminology">
+     Terminology
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naming-convention">
+     Naming Convention
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#versioning">
+     Versioning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-handling">
+     Error Handling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multithreading-and-concurrency">
+     Multithreading and Concurrency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-binary-interface">
+     Application Binary Interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tracing">
+     Tracing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logging">
+     Logging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#environment-variables">
+     Environment Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<div class="section" id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">#</a></h2>
+<p>The objective of the oneAPI Unified Runtime is to provide a unified interface to
+device agnostic runtimes such as DPC++ across a wide variety of software platforms. The unified
+runtime provides extensibility where new backends can be developed to support
+new software platforms and devices. Software platforms can be enumerated through the interface
+and used to provide best experience. The interface will semantically align with the Level Zero
+Driver interface and support native platform access.</p>
+<img alt="../_images/one_api_sw_stack.png" src="../_images/one_api_sw_stack.png" />
+</div>
+<div class="section" id="fundamentals">
+<h2>Fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">#</a></h2>
+<p>The following section provides fundamentals of the API design.
+For more detailed information, refer to the programming guides and detailed specification pages.</p>
+<p>The repository for Unified Runtime can be found here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/oneapi-src/unified-runtime">oneapi-src/unified-runtime</a></p></li>
+</ul>
+<div class="section" id="terminology">
+<h3>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">#</a></h3>
+<p>This specification uses key words based on <a class="reference external" href="https://www.ietf.org/rfc/rfc2119.txt">RFC2119</a> to indicate requirement level.
+In particular, the following words are used to describe the actions of an implementation of this specification:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>May</strong> - the word <em>may</em>, or the adjective <em>optional</em>, mean that conforming implementations are permitted to, but need not behave as described.</p></li>
+<li><p><strong>Should</strong> - the word <em>should</em>, or the adjective <em>recommended</em>, mean that there could be reasons for an implementation to deviate from the behavior described, but that such deviation should be avoided.</p></li>
+<li><p><strong>Must</strong> - the word <em>must</em>, or the term <em>required</em> or <em>shall</em>, mean that the behavior described is an absolute requirement of the specification.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="naming-convention">
+<h3>Naming Convention<a class="headerlink" href="#naming-convention" title="Permalink to this headline">#</a></h3>
+<p>The following naming conventions must be followed:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>All functions must be prefixed with <cite>ur</cite></p></li>
+<li><p>All functions must use camel case <cite>urObjectAction</cite> convention</p></li>
+<li><p>All macros must use all caps <cite>UR_NAME</cite> convention</p></li>
+<li><p>All structures, enumerations and other types must follow <cite>ur_name_t</cite> snake case convention</p></li>
+<li><p>All structure members and function parameters must use camel case convention</p></li>
+<li><p>All enumerator values must use all caps <cite>UR_ENUM_ETOR_NAME</cite> convention</p></li>
+<li><p>All handle types must end with <cite>handle_t</cite></p></li>
+<li><p>All descriptor structures must end with <cite>desc_t</cite></p></li>
+<li><p>All property structures must end with <cite>properties_t</cite></p></li>
+<li><p>All flag enumerations must end with <cite>flags_t</cite></p></li>
+</ul>
+</div></blockquote>
+<p>The following coding conventions must be followed:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>All descriptor structures must be derived from <cite>:ref:`ur-base-desc-t</cite>`</p></li>
+<li><p>All property structures must be derived from <cite>:ref:`ur-base-properties-t</cite>`</p></li>
+<li><p>All function input parameters must precede output parameters</p></li>
+<li><p>All functions must return <a class="reference internal" href="api.html#ur-result-t"><span class="std std-ref">ur_result_t</span></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="versioning">
+<h3>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">#</a></h3>
+<p>There are multiple versions that should be used by the application to determine compatibility:</p>
+<p><strong>Platform Version</strong> - this is the version of the API supported by the platform.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>This is typically used to determine if the device supports the minimum set of APIs required by the application</p></li>
+<li><p>There is a single 32-bit value that represents an entire collection of APIs</p></li>
+<li><p>The value is encoded with 16-bit Major and 16-bit Minor parts</p></li>
+<li><p>Major version increment consist of modified functionality, including deprecate features, and may break backwards-compatibility</p></li>
+<li><p>Minor version increment consist of additional functionality, including promoted extensions, and must retain backwards-compatibility</p></li>
+<li><p>The value is determined from calling <a class="reference internal" href="api.html#urplatformgetapiversion"><span class="std std-ref">urPlatformGetApiVersion</span></a></p></li>
+<li><p>The value returned will be the minimum of the <a class="reference internal" href="api.html#ur-api-version-t"><span class="std std-ref">ur_api_version_t</span></a> supported by the device and known by the driver</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="error-handling">
+<h3>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">#</a></h3>
+<p>The following design philosophies are adopted to reduce Host-side overhead:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>By default, the driver implementation may not perform parameter validation of any kind</p>
+<ul>
+<li><p>This should be handled by validation layer(s)</p></li>
+</ul>
+</li>
+<li><p>By default, neither the driver nor device provide may provide any protection against the following:</p>
+<ul>
+<li><p>Invalid API programming</p></li>
+<li><p>Invalid function arguments</p></li>
+<li><p>Function infinite loops or recursions</p></li>
+<li><p>Synchronization primitive deadlocks</p></li>
+<li><p>Non-visible memory access by the Host or device</p></li>
+<li><p>Non-resident memory access by the device</p></li>
+</ul>
+</li>
+<li><p>The driver implementation is <strong>not</strong> required to perform API validation of any kind</p>
+<ul>
+<li><p>The driver should ensure well-behaved applications are not burdened with the overhead needed for non-behaving applications</p></li>
+<li><p>Unless otherwise specified, the driver behavior is undefined when APIs are improperly used</p></li>
+<li><p>For debug purposes, API validation can be enabled via the loader’s validation layer(s)</p></li>
+</ul>
+</li>
+<li><p>All API functions return <a class="reference internal" href="api.html#ur-result-t"><span class="std std-ref">ur_result_t</span></a></p>
+<ul>
+<li><p>This enumeration contains error codes for the Level Zero APIs and validation layers</p></li>
+<li><p>This allows for a consistent pattern on the application side for catching errors; especially when validation layer(s) are enabled</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="multithreading-and-concurrency">
+<h3>Multithreading and Concurrency<a class="headerlink" href="#multithreading-and-concurrency" title="Permalink to this headline">#</a></h3>
+<p>The following design philosophies are adopted in order to maximize Host thread concurrency:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>APIs are free-threaded when the runtime’s object handle is different.</p>
+<ul>
+<li><p>the runtime should avoid thread-locks for these API calls</p></li>
+</ul>
+</li>
+<li><p>APIs are not thread-safe when the runtime’s object handle is the same, except when explicitly noted.</p>
+<ul>
+<li><p>the application must ensure multiple threads do not enter an API when the handle is the same</p></li>
+</ul>
+</li>
+<li><p>APIs are not thread-safe with other APIs that use the same runtime’s object handle</p>
+<ul>
+<li><p>the application must ensure multiple threads do not enter these APIs when the handle is the same</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p>In general, the API is designed to be free-threaded rather than thread-safe.
+This provides multithreaded applications with complete control over both threading and locks.
+This also eliminates unnecessary runtime overhead for single threaded applications and/or very low latency usages.</p>
+<p>The exception to this rule is that all memory allocation APIs are thread-safe since they allocate from a single global memory pool.
+If an application needs lock-free memory allocation, then it could allocate a per-thread pool and implement its own sub-allocator.</p>
+<p>An application is in direct control over all Host thread creation and usage.
+The runtime should never implicitly create threads.
+If there is a need for an implementation to use a background thread, then that thread should be created and provided by the application.</p>
+<p>Each API function must document details on the multithreading requirements for that call.</p>
+<p>The primary usage-model enabled by these rules is:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>multiple, simultaneous threads may operate on independent driver objects with no implicit thread-locks</p></li>
+<li><p>driver object handles may be passed between and used by multiple threads with no implicit thread-locks</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="application-binary-interface">
+<h3>Application Binary Interface<a class="headerlink" href="#application-binary-interface" title="Permalink to this headline">#</a></h3>
+<p>The Unified Runtime C APIs are provided to applications by a shared import library.
+C/C++ applications must include “ur_api.h” and link with “ur_api.lib”.
+The Unified Runtime C Device-Driver Interfaces (DDIs) are provided to the import library by the shared loader or runtime and driver libraries.
+C/C++ loaders and drivers must include “ur_ddi.h”.</p>
+<p>The implementation of these libraries must use the default Application Binary Interface (ABI) of the standard C compiler for the platform.
+An ABI in this context means the size, alignment, and layout of C data types; the procedure calling convention.
+and the naming convention for shared library symbols corresponding to C functions. The ABI is backward-compatible
+for API minor version increments such as adding new functions, appending new enumerators, and using reserved
+bits in bitfields. ABI is not guaranteed to be backward-compatible for API major version increments such as
+modifying existing function signatures and structures, removing functions and structures, etc.</p>
+<p>On platforms where Unified Runtime is provided as a shared library, library symbols beginning with “ur”, “urt” or “urs”
+and followed by a digit or uppercase letter are reserved for use by the implementation.
+Applications which use Unified Runtime must not provide definitions of these symbols.
+This allows the Unified Runtime shared library to be updated with additional symbols for new API versions or extensions without causing symbol conflicts with existing applications.</p>
+</div>
+<div class="section" id="tracing">
+<h3>Tracing<a class="headerlink" href="#tracing" title="Permalink to this headline">#</a></h3>
+<p>Unified Runtime loader implements tracing support through the <a class="reference external" href="https://github.com/intel/llvm/blob/sycl/xptifw/doc/XPTI_Framework.md">XPTI framework</a>.</p>
+<table class="table" id="id1">
+<caption><span class="caption-text">UR Stream <cite>“ur”</cite> Notification Signatures</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Trace Point Type</p></th>
+<th class="head"><p>Parameter Description</p></th>
+<th class="head"><p>Metadata</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>function_with_args_begin</cite></p></td>
+<td><div class="line-block">
+<div class="line"><strong>trace_type</strong>: <cite>xpti::trace_point_type_t::function_with_args_begin</cite> that marks the beginning of a function</div>
+<div class="line"><strong>parent</strong>: nullptr</div>
+<div class="line"><strong>event</strong>: nullptr</div>
+<div class="line"><strong>instance</strong>: Unique ID to allow the correlation of the <cite>function_with_args_begin</cite> event with the <cite>function_with_args_end</cite> event.</div>
+<div class="line"><strong>user_data</strong>: A pointer to <cite>function_with_args_t</cite> object, that includes function ID, name, and arguments.</div>
+</div>
+</td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>function_with_args_end</cite></p></td>
+<td><div class="line-block">
+<div class="line"><strong>trace_type</strong>: <cite>xpti::trace_point_type_t::function_with_args_end</cite> that marks the end of a function</div>
+<div class="line"><strong>parent</strong>: nullptr</div>
+<div class="line"><strong>event</strong>: nullptr</div>
+<div class="line"><strong>instance</strong>: Unique ID to allow the correlation of the <cite>function_with_args_end</cite> event with the <cite>function_with_args_begin</cite> event.</div>
+<div class="line"><strong>user_data</strong>: A pointer to <cite>function_with_args_t</cite> object, that includes function ID, name, arguments, and return value.</div>
+</div>
+</td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">#</a></h3>
+<p>Logging in UR is handled by loggers which can be set for each library separately. There are several levels of logging: <em>debug</em>, <em>info</em>, <em>warning</em>, and <em>error</em>.
+The level of logging determines what messages will be printed, ie. the level set to <em>warning</em> means all messages at levels <em>warning</em> and <em>error</em> will be printed.
+By default, no messages are printed.</p>
+<p>By default, there is a guarantee that <em>error</em> messages are flushed immediately. One can change this behavior to flush on lower-level messages.</p>
+<p>Loggers redirect messages to <em>stdout</em>, <em>stderr</em>, or a file (default: <em>stderr</em>).</p>
+<p>All of these logging options can be set with <strong>UR_LOG_LOADER</strong> and <strong>UR_LOG_NULL</strong> environment variables described in the <strong>Environment Variables</strong> section below.
+Both of these environment variables have the same syntax for setting logger options:</p>
+<blockquote>
+<div><p>“[level:debug|info|warning|error];[flush:&lt;debug|info|warning|error&gt;];[output:stdout|stderr|file,&lt;path&gt;]”</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>level - a log level, meaning that only messages from this level and above are printed,</dt><dd><p>possible values, from the lowest level to the highest one: <em>debug</em>, <em>info</em>, <em>warning</em>, <em>error</em>,</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>flush - a flush level, meaning that messages at this level and above are guaranteed to be flushed immediately,</dt><dd><p>possible values are the same as above,</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>output - indicates where messages should be printed,</dt><dd><p>possible values are: <em>stdout</em>, <em>stderr</em> and <em>file</em>,
+when providing a <em>file</em> output option, a <em>&lt;path&gt;</em> is required</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For output to file, a path to the file have to be provided after a comma, like in the example above. The path has to exist, file will be created if not existing.
+All these three logger options are optional. The defaults are set when options are not provided in the environment variable.
+Options have to be separated with <cite>;</cite>, option names, and their values with <cite>:</cite>. Additionally, when providing <em>file</em> output, the keyword <em>file</em> and a path to a file
+have to be separated by <cite>,</cite>.</p>
+</div>
+</div></blockquote>
+<p>An example of an environment variable for setting up the loader library logger with logging level set to <em>info</em>, flush level set to <em>warning</em>, and output set to
+the <code class="docutils literal notranslate"><span class="pre">out.log</span></code> file:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">UR_LOG_LOADER</span><span class="o">=</span><span class="s">&quot;level:info;flush:warning;output:file,out.log&quot;</span>
+</pre></div>
+</div>
+<p>An example of an environment variable for setting up the null adapter library with logging level set to <em>warning</em> and output set to stdout:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">UR_LOG_NULL</span><span class="o">=</span><span class="s">&quot;level:warning;output:stdout&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment-variables">
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">#</a></h3>
+<p>Specific environment variables can be set to control the behavior of unified runtime or enable certain features.</p>
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-UR_LOG_LOADER">
+<span class="sig-name descname"><span class="pre">UR_LOG_LOADER</span></span><a class="headerlink" href="#envvar-UR_LOG_LOADER" title="Permalink to this definition">#</a></dt>
+<dd><p>Holds parameters for setting Unified Runtime loader logging. The syntax is described in the <a class="reference internal" href="#logging">Logging</a> section.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-UR_LOG_NULL">
+<span class="sig-name descname"><span class="pre">UR_LOG_NULL</span></span><a class="headerlink" href="#envvar-UR_LOG_NULL" title="Permalink to this definition">#</a></dt>
+<dd><p>Holds parameters for setting Unified Runtime null adapter logging. The syntax is described in the <a class="reference internal" href="#logging">Logging</a> section.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-UR_LOG_VALIDATION">
+<span class="sig-name descname"><span class="pre">UR_LOG_VALIDATION</span></span><a class="headerlink" href="#envvar-UR_LOG_VALIDATION" title="Permalink to this definition">#</a></dt>
+<dd><p>Holds parameters for setting Unified Runtime validation logging. The syntax is described in the <a class="reference internal" href="#logging">Logging</a> section.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-UR_ADAPTERS_FORCE_LOAD">
+<span class="sig-name descname"><span class="pre">UR_ADAPTERS_FORCE_LOAD</span></span><a class="headerlink" href="#envvar-UR_ADAPTERS_FORCE_LOAD" title="Permalink to this definition">#</a></dt>
+<dd><p>Holds a comma-separated list of library names used by the loader for adapter discovery. By setting this value you can
+force the loader to use specific adapter implementations from the libraries provided.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This environment variable should be used for development and debugging only.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When this environmental variable is used the paths in environmental variable <span class="target" id="index-0"></span><a class="reference internal" href="#envvar-UR_ADAPTERS_SEARCH_PATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">UR_ADAPTERS_SEARCH_PATH</span></code></a>
+are ignored.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-UR_ADAPTERS_SEARCH_PATH">
+<span class="sig-name descname"><span class="pre">UR_ADAPTERS_SEARCH_PATH</span></span><a class="headerlink" href="#envvar-UR_ADAPTERS_SEARCH_PATH" title="Permalink to this definition">#</a></dt>
+<dd><p>Holds a comma-separated list of directory paths used for adapter discovery. By setting this value you can extend
+the list of directories the loader searches for adapter implementations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The usage of colons and semicolons is allowed only inside ‘’ or “” quote signs.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This environmental variable is ignored when <span class="target" id="index-1"></span><a class="reference internal" href="#envvar-UR_ADAPTERS_FORCE_LOAD"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">UR_ADAPTERS_FORCE_LOAD</span></code></a> environmental variable is used.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-UR_ENABLE_VALIDATION_LAYER">
+<span class="sig-name descname"><span class="pre">UR_ENABLE_VALIDATION_LAYER</span></span><a class="headerlink" href="#envvar-UR_ENABLE_VALIDATION_LAYER" title="Permalink to this definition">#</a></dt>
+<dd><p>Holds the value <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>. By setting it to <code class="docutils literal notranslate"><span class="pre">1</span></code> you enable validation layer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This environment variable should be used for development and debugging only.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-UR_ENABLE_PARAMETER_VALIDATION">
+<span class="sig-name descname"><span class="pre">UR_ENABLE_PARAMETER_VALIDATION</span></span><a class="headerlink" href="#envvar-UR_ENABLE_PARAMETER_VALIDATION" title="Permalink to this definition">#</a></dt>
+<dd><p>Holds the value <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>. By setting it to <code class="docutils literal notranslate"><span class="pre">1</span></code> you enable parameter validation for Unified Runtime API calls.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This environment variable should be used together with <span class="target" id="index-2"></span><a class="reference internal" href="#envvar-UR_ENABLE_VALIDATION_LAYER"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">UR_ENABLE_VALIDATION_LAYER</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-UR_ENABLE_LEAK_CHECKING">
+<span class="sig-name descname"><span class="pre">UR_ENABLE_LEAK_CHECKING</span></span><a class="headerlink" href="#envvar-UR_ENABLE_LEAK_CHECKING" title="Permalink to this definition">#</a></dt>
+<dd><p>Holds the value <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>. By setting it to <code class="docutils literal notranslate"><span class="pre">1</span></code> you enable leak checking for Unified Runtime API calls involving
+object creation/destruction. Leak checking depends on the logging mechanism.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This environment variable should be used together with <span class="target" id="index-3"></span><a class="reference internal" href="#envvar-UR_ENABLE_VALIDATION_LAYER"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">UR_ENABLE_VALIDATION_LAYER</span></code></a> and <span class="target" id="index-4"></span><a class="reference internal" href="#envvar-UR_LOG_VALIDATION"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">UR_LOG_VALIDATION</span></code></a>.</p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">oneAPI Unified Runtime: 0.6</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="PROG.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Programming Guide</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Intel<br/>
+  
+      &copy; Copyright 2020, Intel.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

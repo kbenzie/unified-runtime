@@ -1,0 +1,151 @@
+
+====================
+ Contribution Guide
+====================
+
+This contribution guide explains how to contribute to the Unified Runtime
+project and what processes you must follow in order to have your changes
+accepted into the project.
+
+.. important::
+
+    Before making a contribution you *should* determine if the change should be
+    made directly to the core specification or introduced as an experimental
+    feature. The criteria we use to make this distinction are as follows:
+
+    *   The feature exists to enable an experimental feature in a parallel
+        language runtime being built on top of Unified Runtime.
+
+    *   The design phase of the feature is expected to span multiple oneAPI
+        releases.
+
+    *   A proof of concept implementation exists for a single adapter but
+        multiple adapters are intended to be supported.
+
+    If the feature in question matches any of these criteria, please refer to
+    the `Experimental Features`_ section, otherwise refer to the `Core
+    Features`_ section. If you are unsure how to proceed please `create an
+    issue <https://github.com/oneapi-src/unified-runtime/issues/new>`_ asking
+    for clarification.
+
+Generating Source
+=================
+
+The specification and many other components in the Unified Runtime repository
+are generated from a set of YAML_ files which are used as inputs to a Mako_
+based templating system. The YAML_ file syntax is defined `YAML syntax`_. To
+generate the outputs of the Mako_ templates a build directory must be
+configured, instructions are available in the `README
+<https://github.com/oneapi-src/unified-runtime/blob/main/README.md>`_ file.
+Upon successfully configuring a build directory, generate the outputs with the
+following command (or suitable build system equivalent):
+
+.. code-block:: console
+
+    $ cmake --build build --target generate
+
+.. _YAML: https://yaml.org/
+.. _Mako: https://www.makotemplates.org/
+.. _YAML syntax:
+   https://github.com/oneapi-src/unified-runtime/blob/main/scripts/YaML.md
+
+Naming Conventions
+==================
+
+Additional to what is described in the `YAML syntax`_ document. You should
+follow the following naming convention for argument names.
+
+*   Entry-points use ``camelCase`` conventions i.e ``$xDeviceGet``.
+
+*   Entry-points operating on an object handle follow the naming convention
+    ``$x<Object><Operation>``.
+
+*   Argument names are also ``camelCase`` and are prefixed with a type
+    indicator:
+
+    *   Pointer arguments are prefixed with ``p`` or ``pp`` for double pointer
+        i.e. ``pProperties``.
+
+    *   Handle arguments are prefixed with ``h`` i.e. ``hQueue``
+
+    *   Pointer to handle arguments, such as out parameters, are prefix with
+        ``ph`` i.e. ``phQueue``.
+
+Forks and Pull Requests
+=======================
+
+To submit a pull request to Unified Runtime, you must first create your own
+personal fork of the project and submit your changes to a branch. By convention
+we name our branches ``<your_name>/<short_description>``, where the description
+indicates the intent of your change. You can then raise a pull request
+targeting ``oneapi-src/unified-runtime:main``.
+
+When making changes to the specification you *must* commit all changes to files
+in the repository as a result of `Generating Source`_.
+
+Before your pull request is merged it *must* pass all jobs in the GitHub
+Actions workflow and *must* be reviewed by no less than two code owners.
+
+.. hint::
+
+    When rebasing a branch on top of ``main`` results in merged conflicts it is
+    recommended to resolve conflicts in the ``*.yml`` files then `Generating
+    Source`_. This will automatically resolve conflicts in the generated source
+    files, leaving only conflicts in non-generated source files to be resolved,
+    if any.
+
+Core Features
+=============
+
+Core features are defined in the ``*.yml`` files in the `scripts/core
+<https://github.com/oneapi-src/unified-runtime/tree/main/scripts/core>`_
+directory. Most of the files are named after the API object who's interface is
+defined within them, with the following exceptions:
+
+*   `scripts/core/common.yml`_ defines symbols which are used by multiple
+    interfaces through the specification, e.g. macros, object handles, result
+    enumerations, and structure type enumerations.
+*   `scripts/core/enqueue.yml`_ defines commands which can be enqueued on a
+    queue object.
+*   `scripts/core/runtime.yml`_ defines global symbols pertaining to
+    initialization and tear down of the entire runtime.
+*   `scripts/core/registry.yml`_ contains an enumeration of all entry-points,
+    past and present, for use in the XPTI tracing framework. It is
+    automatically updated so shouldn't require manual editing.
+
+.. _scripts/core/common.yml:
+   https://github.com/oneapi-src/unified-runtime/blob/main/scripts/core/common.yml
+.. _scripts/core/enqueue.yml:
+   https://github.com/oneapi-src/unified-runtime/blob/main/scripts/core/enqueue.yml
+.. _scripts/core/runtime.yml:
+   https://github.com/oneapi-src/unified-runtime/blob/main/scripts/core/runtime.yml
+.. _scripts/core/registry.yml:
+   https://github.com/oneapi-src/unified-runtime/blob/main/scripts/core/registry.yml
+
+Conformance Testing
+-------------------
+
+For contributions to the core specification conformance tests *should* be
+included as part of your change. The conformance tests can be found
+under ``test/conformance/<component>``, where component refers to the API
+object an entry-point belongs to i.e. platform, enqueue, device.
+
+The conformance tests *should* ideally include end-to-end testing of all the
+changes to the specification if possible. At minimum, they *must* cover at
+least one test for each of the possible error codes returned, excluding any
+disaster cases like :ref:`UR_RESULT_ERROR_OUT_OF_HOST_MEMORY <ur-result-t>` or similar.
+
+Conformance tests *must* not make assumptions about the adapter under test.
+Tests fixtures or cases *must* query for support of optional features and skip
+testing if unsupported by the adapter.
+
+Experimental Features
+=====================
+
+.. warning::
+    *   No requirement to maintain API/ABI stability of the feature.
+
+    *   No requirement to implement conformance tests for the feature.
+
+    *   No guarantees that the feature will experimental features may be
+        replace, updated, or removed at any time.
