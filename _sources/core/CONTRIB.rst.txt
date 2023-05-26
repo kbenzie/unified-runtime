@@ -49,27 +49,25 @@ following command (or suitable build system equivalent):
 .. _YAML syntax:
    https://github.com/oneapi-src/unified-runtime/blob/main/scripts/YaML.md
 
-Naming Conventions
-==================
+Writing YAML
+============
 
-Additional to what is described in the `YAML syntax`_ document. You should
-follow the following naming convention for argument names.
+Please read the :ref:`core/INTRO:Naming Convention` section prior to making a
+contribuition and refer to the `YAML syntax`_ 
 
-*   Entry-points use ``camelCase`` conventions i.e ``$xDeviceGet``.
+In the ``*.yml`` files when ``ur`` or ``UR`` should exist in the output,
+instead use ``$x`` or ``$X}`` respectively. Instances of these will
+be replaced while `Generating Source`_.
 
-*   Entry-points operating on an object handle follow the naming convention
-    ``$x<Object><Operation>``.
+Additional, the following conventions *must* be followed for function
+arguments:
 
-*   Argument names are also ``camelCase`` and are prefixed with a type
-    indicator:
-
-    *   Pointer arguments are prefixed with ``p`` or ``pp`` for double pointer
-        i.e. ``pProperties``.
-
-    *   Handle arguments are prefixed with ``h`` i.e. ``hQueue``
-
-    *   Pointer to handle arguments, such as out parameters, are prefix with
-        ``ph`` i.e. ``phQueue``.
+*   Argument names are ``camelCase``.
+*   Arguments with pointer types are prefixed with ``p`` for each pointer in
+    the type i.e. ``char *pMessage``, ``char **ppMessage``, etc.
+*   Handle arguments are prefixed with ``h`` i.e. ``hQueue``.
+*   Pointer to handle arguments, such as out parameters, are prefix with ``ph``
+    i.e. ``phQueue``.
 
 Forks and Pull Requests
 =======================

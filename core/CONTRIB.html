@@ -252,8 +252,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#naming-conventions">
-   Naming Conventions
+  <a class="reference internal nav-link" href="#writing-yaml">
+   Writing YAML
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -303,8 +303,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#naming-conventions">
-   Naming Conventions
+  <a class="reference internal nav-link" href="#writing-yaml">
+   Writing YAML
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -376,24 +376,22 @@ following command (or suitable build system equivalent):</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="naming-conventions">
-<h2>Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this headline">#</a></h2>
-<p>Additional to what is described in the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/blob/main/scripts/YaML.md">YAML syntax</a> document. You should
-follow the following naming convention for argument names.</p>
+<div class="section" id="writing-yaml">
+<h2>Writing YAML<a class="headerlink" href="#writing-yaml" title="Permalink to this headline">#</a></h2>
+<p>Please read the <a class="reference internal" href="INTRO.html#naming-convention"><span class="std std-ref">Naming Convention</span></a> section prior to making a
+contribuition and refer to the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/blob/main/scripts/YaML.md">YAML syntax</a></p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">*.yml</span></code> files when <code class="docutils literal notranslate"><span class="pre">ur</span></code> or <code class="docutils literal notranslate"><span class="pre">UR</span></code> should exist in the output,
+instead use <code class="docutils literal notranslate"><span class="pre">$x</span></code> or <code class="docutils literal notranslate"><span class="pre">$X}</span></code> respectively. Instances of these will
+be replaced while <a class="reference internal" href="#generating-source">Generating Source</a>.</p>
+<p>Additional, the following conventions <em>must</em> be followed for function
+arguments:</p>
 <ul class="simple">
-<li><p>Entry-points use <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> conventions i.e <code class="docutils literal notranslate"><span class="pre">$xDeviceGet</span></code>.</p></li>
-<li><p>Entry-points operating on an object handle follow the naming convention
-<code class="docutils literal notranslate"><span class="pre">$x&lt;Object&gt;&lt;Operation&gt;</span></code>.</p></li>
-<li><p>Argument names are also <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> and are prefixed with a type
-indicator:</p>
-<ul>
-<li><p>Pointer arguments are prefixed with <code class="docutils literal notranslate"><span class="pre">p</span></code> or <code class="docutils literal notranslate"><span class="pre">pp</span></code> for double pointer
-i.e. <code class="docutils literal notranslate"><span class="pre">pProperties</span></code>.</p></li>
-<li><p>Handle arguments are prefixed with <code class="docutils literal notranslate"><span class="pre">h</span></code> i.e. <code class="docutils literal notranslate"><span class="pre">hQueue</span></code></p></li>
-<li><p>Pointer to handle arguments, such as out parameters, are prefix with
-<code class="docutils literal notranslate"><span class="pre">ph</span></code> i.e. <code class="docutils literal notranslate"><span class="pre">phQueue</span></code>.</p></li>
-</ul>
-</li>
+<li><p>Argument names are <code class="docutils literal notranslate"><span class="pre">camelCase</span></code>.</p></li>
+<li><p>Arguments with pointer types are prefixed with <code class="docutils literal notranslate"><span class="pre">p</span></code> for each pointer in
+the type i.e. <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*pMessage</span></code>, <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">**ppMessage</span></code>, etc.</p></li>
+<li><p>Handle arguments are prefixed with <code class="docutils literal notranslate"><span class="pre">h</span></code> i.e. <code class="docutils literal notranslate"><span class="pre">hQueue</span></code>.</p></li>
+<li><p>Pointer to handle arguments, such as out parameters, are prefix with <code class="docutils literal notranslate"><span class="pre">ph</span></code>
+i.e. <code class="docutils literal notranslate"><span class="pre">phQueue</span></code>.</p></li>
 </ul>
 </div>
 <div class="section" id="forks-and-pull-requests">
