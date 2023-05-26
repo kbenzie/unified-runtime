@@ -277,6 +277,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#experimental-features">
    Experimental Features
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naming-convention">
+     Naming Convention
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -328,6 +335,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#experimental-features">
    Experimental Features
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naming-convention">
+     Naming Convention
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -379,11 +393,12 @@ following command (or suitable build system equivalent):</p>
 <div class="section" id="writing-yaml">
 <h2>Writing YAML<a class="headerlink" href="#writing-yaml" title="Permalink to this headline">#</a></h2>
 <p>Please read the <a class="reference internal" href="INTRO.html#naming-convention"><span class="std std-ref">Naming Convention</span></a> section prior to making a
-contribuition and refer to the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/blob/main/scripts/YaML.md">YAML syntax</a></p>
-<p>In the <code class="docutils literal notranslate"><span class="pre">*.yml</span></code> files when <code class="docutils literal notranslate"><span class="pre">ur</span></code> or <code class="docutils literal notranslate"><span class="pre">UR</span></code> should exist in the output,
-instead use <code class="docutils literal notranslate"><span class="pre">$x</span></code> or <code class="docutils literal notranslate"><span class="pre">$X}</span></code> respectively. Instances of these will
-be replaced while <a class="reference internal" href="#generating-source">Generating Source</a>.</p>
-<p>Additional, the following conventions <em>must</em> be followed for function
+contribuition and refer to the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/blob/main/scripts/YaML.md">YAML syntax</a> for specifics of how to define
+the required contructs.</p>
+<p>When writing <code class="docutils literal notranslate"><span class="pre">*.yml</span></code> files and <code class="docutils literal notranslate"><span class="pre">ur</span></code> or <code class="docutils literal notranslate"><span class="pre">UR</span></code> should exist in the output
+use <code class="docutils literal notranslate"><span class="pre">$x</span></code> or <code class="docutils literal notranslate"><span class="pre">$X}</span></code> respectively. These will be replaced while
+<a class="reference internal" href="#generating-source">Generating Source</a>.</p>
+<p>Additionally, the following conventions <em>must</em> be followed for function
 arguments:</p>
 <ul class="simple">
 <li><p>Argument names are <code class="docutils literal notranslate"><span class="pre">camelCase</span></code>.</p></li>
@@ -450,11 +465,30 @@ testing if unsupported by the adapter.</p>
 <h2>Experimental Features<a class="headerlink" href="#experimental-features" title="Permalink to this headline">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
+<p>Experimental features:</p>
 <ul class="simple">
-<li><p>No guarantees that the feature will experimental features may be
-replace, updated, or removed at any time.</p></li>
-<li><p>No requirement to maintain API/ABI stability of the feature.</p></li>
-<li><p>No requirement to implement conformance tests for the feature.</p></li>
+<li><p>May be replaced, updated, or removed at any time.</p></li>
+<li><p>Do not require maintaining API/ABI stability.</p></li>
+<li><p>Do not require implementation of conformance tests.</p></li>
+</ul>
+</div>
+<p>Experimental features <em>must</em> be defined in two files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/core/EXP-FEATURE.rst</span></code> document describing the experimental
+feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/core/exp-feature.yml</span></code> defines the interface as an input to
+<a class="reference internal" href="#generating-source">Generating Source</a>.</p></li>
+</ul>
+<div class="section" id="naming-convention">
+<h3>Naming Convention<a class="headerlink" href="#naming-convention" title="Permalink to this headline">#</a></h3>
+<p>In addition to the requirements referred to in the <a class="reference internal" href="#writing-yaml">Writing YAML</a> section, and
+to easily differentiate experimental feature symbols, the following conventions
+<em>must</em> be adhered to when defining experimental features:</p>
+<ul class="simple">
+<li><p>All functions must use camel case <code class="docutils literal notranslate"><span class="pre">urObjectActionExp</span></code> convention.</p></li>
+<li><p>All macros must use all caps <code class="docutils literal notranslate"><span class="pre">UR_NAME_EXP</span></code> convention.</p></li>
+<li><p>All structures, enumerations, and other types must follow
+<code class="docutils literal notranslate"><span class="pre">ur_exp_name_t</span></code> name case convention.</p></li>
 </ul>
 </div>
 </div>

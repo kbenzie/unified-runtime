@@ -53,13 +53,14 @@ Writing YAML
 ============
 
 Please read the :ref:`core/INTRO:Naming Convention` section prior to making a
-contribuition and refer to the `YAML syntax`_ 
+contribuition and refer to the `YAML syntax`_ for specifics of how to define
+the required contructs.
 
-In the ``*.yml`` files when ``ur`` or ``UR`` should exist in the output,
-instead use ``$x`` or ``$X}`` respectively. Instances of these will
-be replaced while `Generating Source`_.
+When writing ``*.yml`` files and ``ur`` or ``UR`` should exist in the output
+use ``$x`` or ``$X}`` respectively. These will be replaced while
+`Generating Source`_.
 
-Additional, the following conventions *must* be followed for function
+Additionally, the following conventions *must* be followed for function
 arguments:
 
 *   Argument names are ``camelCase``.
@@ -140,13 +141,29 @@ testing if unsupported by the adapter.
 Experimental Features
 =====================
 
-
-
 .. warning::
 
-    *   No guarantees that the feature will experimental features may be
-        replace, updated, or removed at any time.
+    Experimental features:
 
-    *   No requirement to maintain API/ABI stability of the feature.
+    *   May be replaced, updated, or removed at any time.
+    *   Do not require maintaining API/ABI stability.
+    *   Do not require implementation of conformance tests.
 
-    *   No requirement to implement conformance tests for the feature.
+Experimental features *must* be defined in two files:
+
+*   ``scripts/core/EXP-FEATURE.rst`` document describing the experimental
+    feature.
+*   ``scripts/core/exp-feature.yml`` defines the interface as an input to
+    `Generating Source`_.
+
+Naming Convention
+-----------------
+
+In addition to the requirements referred to in the `Writing YAML`_ section, and
+to easily differentiate experimental feature symbols, the following conventions
+*must* be adhered to when defining experimental features:
+
+*   All functions must use camel case ``urObjectActionExp`` convention.
+*   All macros must use all caps ``UR_NAME_EXP`` convention.
+*   All structures, enumerations, and other types must follow
+    ``ur_exp_name_t`` name case convention.
