@@ -396,7 +396,7 @@ following command (or suitable build system equivalent):</p>
 contribuition and refer to the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/blob/main/scripts/YaML.md">YAML syntax</a> for specifics of how to define
 the required contructs.</p>
 <p>When writing <code class="docutils literal notranslate"><span class="pre">*.yml</span></code> files and <code class="docutils literal notranslate"><span class="pre">ur</span></code> or <code class="docutils literal notranslate"><span class="pre">UR</span></code> should exist in the output
-use <code class="docutils literal notranslate"><span class="pre">$x</span></code> or <code class="docutils literal notranslate"><span class="pre">$X}</span></code> respectively. These will be replaced while
+use <code class="docutils literal notranslate"><span class="pre">$x</span></code> or <code class="docutils literal notranslate"><span class="pre">$X</span></code> respectively. These will be replaced while
 <a class="reference internal" href="#generating-source">Generating Source</a>.</p>
 <p>Additionally, the following conventions <em>must</em> be followed for function
 arguments:</p>
@@ -468,15 +468,17 @@ testing if unsupported by the adapter.</p>
 <p>Experimental features:</p>
 <ul class="simple">
 <li><p>May be replaced, updated, or removed at any time.</p></li>
-<li><p>Do not require maintaining API/ABI stability.</p></li>
-<li><p>Do not require implementation of conformance tests.</p></li>
+<li><p>Do not require maintaining API/ABI stability of their own additions
+over time.</p></li>
+<li><p>Do not require conformance testing of their own additions.</p></li>
 </ul>
 </div>
-<p>Experimental features <em>must</em> be defined in two files:</p>
+<p>Experimental features <em>must</em> be defined in two new files, where
+<code class="docutils literal notranslate"><span class="pre">&lt;FEATURE&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;feature&gt;</span></code> are replaced with an appropriate name:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scripts/core/EXP-FEATURE.rst</span></code> document describing the experimental
-feature.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scripts/core/exp-feature.yml</span></code> defines the interface as an input to
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/core/EXP-&lt;FEATURE&gt;.rst</span></code> document specifying the experimental
+feature in natural language.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/core/exp-&lt;feature&gt;.yml</span></code> defines the interface as an input to
 <a class="reference internal" href="#generating-source">Generating Source</a>.</p></li>
 </ul>
 <div class="section" id="naming-convention">

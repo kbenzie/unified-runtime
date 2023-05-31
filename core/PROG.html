@@ -525,24 +525,31 @@ DeviceName.resize(infoSize);
 characteristics of the sub-devices are device specific, but normally they each represent a
 fixed part of the parent device, which can explicitly be programmed individually.</p>
 <pre class="literal-block">ur_device_handle_t hDevice;
-ur_device_partition_property_t properties[] = {
-           <a class="reference internal" href="api.html#ur-device-partition-t"><span class="std std-ref">UR_DEVICE_PARTITION_BY_AFFINITY_DOMAIN</span></a>,
-           <a class="reference internal" href="api.html#ur-device-affinity-domain-flags-t"><span class="std std-ref">UR_DEVICE_AFFINITY_DOMAIN_FLAG_NEXT_PARTITIONABLE</span></a>,
-           0};
+<a class="reference internal" href="api.html#ur-device-partition-property-t"><span class="std std-ref">ur_device_partition_property_t</span></a> prop;
+prop.value.affinity_domain = <a class="reference internal" href="api.html#ur-device-affinity-domain-flags-t"><span class="std std-ref">UR_DEVICE_AFFINITY_DOMAIN_FLAG_NEXT_PARTITIONABLE</span></a>;
+
+ur_device_partition_properties_t properties{
+    <a class="reference internal" href="api.html#ur-structure-type-t"><span class="std std-ref">UR_STRUCTURE_TYPE_DEVICE_PARTITION_PROPERTIES</span></a>,
+    nullptr,
+    &amp;prop,
+    1,
+};
 
 uint32_t count = 0;
 std::vector&lt;ur_device_handle_t&gt; subDevices;
-<a class="reference internal" href="api.html#urdevicepartition"><span class="std std-ref">urDevicePartition</span></a>(hDevice, &amp;properties, &amp;count, nullptr, nullptr);
+<a class="reference internal" href="api.html#urdevicepartition"><span class="std std-ref">urDevicePartition</span></a>(hDevice, &amp;properties, 0, nullptr, &amp;count);
 
 if (count &gt; 0) {
     subDevices.resize(count);
-    <a class="reference internal" href="api.html#urdevicepartition"><span class="std std-ref">urDevicePartition</span></a>(Device, &amp;properties, &amp;count, &amp;subDevices.data(), nullptr);
+    <a class="reference internal" href="api.html#urdevicepartition"><span class="std std-ref">urDevicePartition</span></a>(Device, &amp;properties, count, &amp;subDevices.data(), nullptr);
 }</pre>
 <p>The returned sub-devices may be requested for further partitioning into sub-sub-devices, and so on.
-An implementation would return “0” in the count if no further partitioning is supported.</p>
-<pre class="literal-block">uint32_t count = 1;
-ur_device_handle_t hSubSubDevice;
-<a class="reference internal" href="api.html#urdevicepartition"><span class="std std-ref">urDevicePartition</span></a>(subDevices[0], properties, &amp;count, &amp;hSubSubDevice, nullptr);</pre>
+An implementation will return “0” in the count if no further partitioning is supported.</p>
+<pre class="literal-block">uint32_t count;
+<a class="reference internal" href="api.html#urdevicepartition"><span class="std std-ref">urDevicePartition</span></a>(subDevices[0], &amp;properties, 0, nullptr, &amp;count);
+if(count == 0){
+    // no further partitioning allowed
+}</pre>
 </div>
 </div>
 <div class="section" id="contexts">

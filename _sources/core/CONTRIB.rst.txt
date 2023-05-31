@@ -57,7 +57,7 @@ contribuition and refer to the `YAML syntax`_ for specifics of how to define
 the required contructs.
 
 When writing ``*.yml`` files and ``ur`` or ``UR`` should exist in the output
-use ``$x`` or ``$X}`` respectively. These will be replaced while
+use ``$x`` or ``$X`` respectively. These will be replaced while
 `Generating Source`_.
 
 Additionally, the following conventions *must* be followed for function
@@ -146,14 +146,16 @@ Experimental Features
     Experimental features:
 
     *   May be replaced, updated, or removed at any time.
-    *   Do not require maintaining API/ABI stability.
-    *   Do not require implementation of conformance tests.
+    *   Do not require maintaining API/ABI stability of their own additions
+        over time.
+    *   Do not require conformance testing of their own additions.
 
-Experimental features *must* be defined in two files:
+Experimental features *must* be defined in two new files, where
+``<FEATURE>``/``<feature>`` are replaced with an appropriate name:
 
-*   ``scripts/core/EXP-FEATURE.rst`` document describing the experimental
-    feature.
-*   ``scripts/core/exp-feature.yml`` defines the interface as an input to
+*   ``scripts/core/EXP-<FEATURE>.rst`` document specifying the experimental
+    feature in natural language.
+*   ``scripts/core/exp-<feature>.yml`` defines the interface as an input to
     `Generating Source`_.
 
 Naming Convention
