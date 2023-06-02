@@ -33,8 +33,8 @@ Generating Source
 
 The specification and many other components in the Unified Runtime repository
 are generated from a set of YAML_ files which are used as inputs to a Mako_
-based templating system. The YAML_ file syntax is defined `YAML syntax`_. To
-generate the outputs of the Mako_ templates a build directory must be
+based templating system. The YAML file syntax is defined in `YAML syntax`_. To
+generate the outputs of the Mako templates a build directory must be
 configured, instructions are available in the `README
 <https://github.com/oneapi-src/unified-runtime/blob/main/README.md>`_ file.
 Upon successfully configuring a build directory, generate the outputs with the
