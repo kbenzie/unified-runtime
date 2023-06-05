@@ -10952,7 +10952,7 @@ title="Print to PDF"
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>hKernel</strong> – [in] handle of the kernel object </p></li>
 <li><p><strong>argIndex</strong> – [in] argument index in range [0, num args - 1] </p></li>
-<li><p><strong>hArgValue</strong> – [in] handle of Memory object. </p></li>
+<li><p><strong>hArgValue</strong> – [in][optional] handle of Memory object. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -10962,7 +10962,6 @@ title="Print to PDF"
 <li><p><a class="reference internal" href="#ur__api_8h_1a70996548e8016a2761523966dd1a470ba7ea430639514566c900e7e98accbd6a3"><span class="std std-ref">UR_RESULT_ERROR_DEVICE_LOST</span></a></p></li>
 <li><p><a class="reference internal" href="#ur__api_8h_1a70996548e8016a2761523966dd1a470ba75d2dbbf373e90cd062bd46d19a2bf58"><span class="std std-ref">UR_RESULT_ERROR_INVALID_NULL_HANDLE</span></a><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span> <span class="pre">==</span> <span class="pre">hKernel</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span> <span class="pre">==</span> <span class="pre">hArgValue</span></code></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#ur__api_8h_1a70996548e8016a2761523966dd1a470ba698649653ff205fa4f40bb81fa5c5a41"><span class="std std-ref">UR_RESULT_ERROR_INVALID_KERNEL_ARGUMENT_INDEX</span></a> </p></li>
@@ -12110,7 +12109,7 @@ title="Print to PDF"
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#ur__api_8h_1a70996548e8016a2761523966dd1a470ba762a7938d5ed5a7614d25372d50614b5"><span class="std std-ref">UR_RESULT_ERROR_INVALID_ENUMERATION</span></a><ul>
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="#ur__api_8h_1a597695c8c926cc8d91689448e5fcf6fba1087ddab7b1810d5843c6f4764a1cc48"><span class="std std-ref"><span class="pre">UR_PROFILING_INFO_COMMAND_END</span></span></a> <span class="pre">&lt;</span> <span class="pre">propName</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="#ur__api_8h_1a597695c8c926cc8d91689448e5fcf6fba39ad66788671d93dda39ce4941d46b55"><span class="std std-ref"><span class="pre">UR_PROFILING_INFO_COMMAND_COMPLETE</span></span></a> <span class="pre">&lt;</span> <span class="pre">propName</span></code></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#ur__api_8h_1a70996548e8016a2761523966dd1a470babd2be31d9dfb888fcef1094cf4e758e2"><span class="std std-ref">UR_RESULT_ERROR_INVALID_VALUE</span></a><ul>
@@ -12639,6 +12638,12 @@ title="Print to PDF"
 <dt class="sig sig-object cpp" id="_CPPv4N19ur_profiling_info_t29UR_PROFILING_INFO_COMMAND_ENDE">
 <span id="_CPPv3N19ur_profiling_info_t29UR_PROFILING_INFO_COMMAND_ENDE"></span><span id="_CPPv2N19ur_profiling_info_t29UR_PROFILING_INFO_COMMAND_ENDE"></span><span class="target" id="ur__api_8h_1a597695c8c926cc8d91689448e5fcf6fba1087ddab7b1810d5843c6f4764a1cc48"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UR_PROFILING_INFO_COMMAND_END</span></span></span><a class="headerlink" href="#_CPPv4N19ur_profiling_info_t29UR_PROFILING_INFO_COMMAND_ENDE" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>[uint64_t] A 64-bit value of current device counter in nanoseconds when the event has finished execution </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19ur_profiling_info_t34UR_PROFILING_INFO_COMMAND_COMPLETEE">
+<span id="_CPPv3N19ur_profiling_info_t34UR_PROFILING_INFO_COMMAND_COMPLETEE"></span><span id="_CPPv2N19ur_profiling_info_t34UR_PROFILING_INFO_COMMAND_COMPLETEE"></span><span class="target" id="ur__api_8h_1a597695c8c926cc8d91689448e5fcf6fba39ad66788671d93dda39ce4941d46b55"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UR_PROFILING_INFO_COMMAND_COMPLETE</span></span></span><a class="headerlink" href="#_CPPv4N19ur_profiling_info_t34UR_PROFILING_INFO_COMMAND_COMPLETEE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>[uint64_t] A 64-bit value of current device counter in nanoseconds when the event and any child events enqueued by this event on the device have finished execution </p>
 </dd></dl>
 
 </dd></dl>

@@ -31,8 +31,8 @@ accepted into the project.
     for clarification.
 
     If you are unsure whether a feature can be supported by certain adapters
-    please seek advise of an appropriate stakeholder or ask the Unified Runtime
-    team via the `GitHub issue tracker
+    please seek the advice of an appropriate stakeholder or ask the Unified
+    Runtime team via the `GitHub issue tracker
     <https://github.com/oneapi-src/unified-runtime/issues/new>`_.
 
 Generating Source
@@ -61,7 +61,7 @@ Writing YAML
 
 Please read the :ref:`core/INTRO:Naming Convention` section prior to making a
 contribuition and refer to the `YAML syntax`_ for specifics of how to define
-the required contructs.
+the required constructs.
 
 When writing ``*.yml`` files and ``ur`` or ``UR`` should exist in the output
 use ``$x`` or ``$X`` respectively. These will be replaced while
