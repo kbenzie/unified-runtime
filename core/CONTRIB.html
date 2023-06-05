@@ -267,6 +267,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#core-optional-features">
+     Core Optional Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conformance-testing">
      Conformance Testing
     </a>
@@ -325,6 +330,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#core-optional-features">
+     Core Optional Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conformance-testing">
      Conformance Testing
     </a>
@@ -356,7 +366,7 @@ title="Print to PDF"
   <div class="section" id="contribution-guide">
 <h1>Contribution Guide<a class="headerlink" href="#contribution-guide" title="Permalink to this headline">#</a></h1>
 <p>This contribution guide explains how to contribute to the Unified Runtime
-project and what processes you must follow in order to have your changes
+project and what processes you <em>must</em> follow in order to have your changes
 accepted into the project.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -369,13 +379,18 @@ language runtime being built on top of Unified Runtime.</p></li>
 <li><p>The design phase of the feature is expected to span multiple oneAPI
 releases.</p></li>
 <li><p>A proof of concept implementation exists for a single adapter but
-multiple adapters are intended to be supported.</p></li>
+multiple adapters are intended to be supported. It is important to
+consider as early as possible whether the feature is appropriate for
+other adapters to evaluate its portability.</p></li>
 </ul>
 <p>If the feature in question matches any of these criteria, please refer to
 the <a class="reference internal" href="#experimental-features">Experimental Features</a> section, otherwise refer to the <a class="reference internal" href="#core-features">Core
 Features</a> section. If you are unsure how to proceed please <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/issues/new">create an
 issue</a> asking
 for clarification.</p>
+<p>If you are unsure whether a feature can be supported by certain adapters
+please seek advise of an appropriate stakeholder or ask the Unified Runtime
+team via the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/issues/new">GitHub issue tracker</a>.</p>
 </div>
 <div class="section" id="generating-source">
 <h2>Generating Source<a class="headerlink" href="#generating-source" title="Permalink to this headline">#</a></h2>
@@ -431,6 +446,17 @@ if any.</p>
 </div>
 <div class="section" id="core-features">
 <h2>Core Features<a class="headerlink" href="#core-features" title="Permalink to this headline">#</a></h2>
+<p>A core feature <em>must</em> have a stable API/ABI and <em>should</em> strive to be supported
+across all adapters. However, core features <em>may</em> be optional and thus only
+supported in one or more adapters. A core feature <em>should</em> also strive to
+enable similar functionality in parallel language runtime (such as SYCL,
+OpenMP, …) where possible although this is a secondary concern.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Optional features should be avoided as much as possible to maximize
+portability across adapters and reducing the overhead required to use make
+use of features in parallel language runtimes.</p>
+</div>
 <p>Core features are defined in the <code class="docutils literal notranslate"><span class="pre">*.yml</span></code> files in the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/tree/main/scripts/core">scripts/core</a>
 directory. Most of the files are named after the API object who’s interface is
 defined within them, with the following exceptions:</p>
@@ -445,7 +471,15 @@ initialization and tear down of the entire runtime.</p></li>
 <li><p><a class="reference external" href="https://github.com/oneapi-src/unified-runtime/blob/main/scripts/core/registry.yml">scripts/core/registry.yml</a> contains an enumeration of all entry-points,
 past and present, for use in the XPTI tracing framework. It is
 automatically updated so shouldn’t require manual editing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/core/exp-&lt;feature&gt;.yml</span></code> see <a class="reference internal" href="#experimental-features">Experimental Features</a>.</p></li>
 </ul>
+<div class="section" id="core-optional-features">
+<h3>Core Optional Features<a class="headerlink" href="#core-optional-features" title="Permalink to this headline">#</a></h3>
+<p>Optional core features <em>must</em> be supported in at least one adapter. Support for
+an optional core feature <em>must</em> be programmatically exposed to the user via
+boolean query call to <a class="reference internal" href="api.html#urdevicegetinfo"><span class="std std-ref">urDeviceGetInfo</span></a> and a new enumerator of the form
+<code class="docutils literal notranslate"><span class="pre">UR_DEVICE_INFO_&lt;FEATURE_NAME&gt;_SUPPORT</span></code> in <a class="reference internal" href="api.html#ur-device-info-t"><span class="std std-ref">ur_device_info_t</span></a>.</p>
+</div>
 <div class="section" id="conformance-testing">
 <h3>Conformance Testing<a class="headerlink" href="#conformance-testing" title="Permalink to this headline">#</a></h3>
 <p>For contributions to the core specification conformance tests <em>should</em> be

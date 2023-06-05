@@ -4,7 +4,7 @@
 ====================
 
 This contribution guide explains how to contribute to the Unified Runtime
-project and what processes you must follow in order to have your changes
+project and what processes you *must* follow in order to have your changes
 accepted into the project.
 
 .. important::
@@ -20,13 +20,20 @@ accepted into the project.
         releases.
 
     *   A proof of concept implementation exists for a single adapter but
-        multiple adapters are intended to be supported.
+        multiple adapters are intended to be supported. It is important to
+        consider as early as possible whether the feature is appropriate for
+        other adapters to evaluate its portability.
 
     If the feature in question matches any of these criteria, please refer to
     the `Experimental Features`_ section, otherwise refer to the `Core
     Features`_ section. If you are unsure how to proceed please `create an
     issue <https://github.com/oneapi-src/unified-runtime/issues/new>`_ asking
     for clarification.
+
+    If you are unsure whether a feature can be supported by certain adapters
+    please seek advise of an appropriate stakeholder or ask the Unified Runtime
+    team via the `GitHub issue tracker
+    <https://github.com/oneapi-src/unified-runtime/issues/new>`_.
 
 Generating Source
 =================
@@ -96,6 +103,17 @@ Actions workflow and *must* be reviewed by no less than two code owners.
 Core Features
 =============
 
+A core feature *must* have a stable API/ABI and *should* strive to be supported
+across all adapters. However, core features *may* be optional and thus only
+supported in one or more adapters. A core feature *should* also strive to
+enable similar functionality in parallel language runtime (such as SYCL,
+OpenMP, ...) where possible although this is a secondary concern.
+
+.. hint::
+    Optional features should be avoided as much as possible to maximize
+    portability across adapters and reducing the overhead required to use make
+    use of features in parallel language runtimes.
+
 Core features are defined in the ``*.yml`` files in the `scripts/core
 <https://github.com/oneapi-src/unified-runtime/tree/main/scripts/core>`_
 directory. Most of the files are named after the API object who's interface is
@@ -111,6 +129,7 @@ defined within them, with the following exceptions:
 *   `scripts/core/registry.yml`_ contains an enumeration of all entry-points,
     past and present, for use in the XPTI tracing framework. It is
     automatically updated so shouldn't require manual editing.
+*   ``scripts/core/exp-<feature>.yml`` see `Experimental Features`_.
 
 .. _scripts/core/common.yml:
    https://github.com/oneapi-src/unified-runtime/blob/main/scripts/core/common.yml
@@ -120,6 +139,14 @@ defined within them, with the following exceptions:
    https://github.com/oneapi-src/unified-runtime/blob/main/scripts/core/runtime.yml
 .. _scripts/core/registry.yml:
    https://github.com/oneapi-src/unified-runtime/blob/main/scripts/core/registry.yml
+
+Core Optional Features
+----------------------
+
+Optional core features *must* be supported in at least one adapter. Support for
+an optional core feature *must* be programmatically exposed to the user via
+boolean query call to :ref:`urDeviceGetInfo` and a new enumerator of the form
+``UR_DEVICE_INFO_<FEATURE_NAME>_SUPPORT`` in :ref:`ur-device-info-t`\.
 
 Conformance Testing
 -------------------
