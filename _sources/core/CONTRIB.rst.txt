@@ -60,8 +60,8 @@ Writing YAML
 ============
 
 Please read the :ref:`core/INTRO:Naming Convention` section prior to making a
-contribuition and refer to the `YAML syntax`_ for specifics of how to define
-the required constructs.
+contribution and refer to the `YAML syntax`_ for specifics of how to define the
+required constructs.
 
 When writing ``*.yml`` files and ``ur`` or ``UR`` should exist in the output
 use ``$x`` or ``$X`` respectively. These will be replaced while
@@ -74,8 +74,8 @@ arguments:
 *   Arguments with pointer types are prefixed with ``p`` for each pointer in
     the type i.e. ``char *pMessage``, ``char **ppMessage``, etc.
 *   Handle arguments are prefixed with ``h`` i.e. ``hQueue``.
-*   Pointer to handle arguments, such as out parameters, are prefix with ``ph``
-    i.e. ``phQueue``.
+*   Pointer to handle arguments, such as out parameters, are prefixed with
+    ``ph`` i.e. ``phQueue``.
 
 Forks and Pull Requests
 =======================
@@ -106,13 +106,14 @@ Core Features
 A core feature *must* have a stable API/ABI and *should* strive to be supported
 across all adapters. However, core features *may* be optional and thus only
 supported in one or more adapters. A core feature *should* also strive to
-enable similar functionality in parallel language runtime (such as SYCL,
+enable similar functionality in parallel language runtimes (such as SYCL,
 OpenMP, ...) where possible although this is a secondary concern.
 
 .. hint::
+
     Optional features should be avoided as much as possible to maximize
-    portability across adapters and reducing the overhead required to use make
-    use of features in parallel language runtimes.
+    portability across adapters and reduce the overhead required to make use of
+    features in parallel language runtimes.
 
 Core features are defined in the ``*.yml`` files in the `scripts/core
 <https://github.com/oneapi-src/unified-runtime/tree/main/scripts/core>`_

@@ -408,8 +408,8 @@ following command (or suitable build system equivalent):</p>
 <div class="section" id="writing-yaml">
 <h2>Writing YAML<a class="headerlink" href="#writing-yaml" title="Permalink to this headline">#</a></h2>
 <p>Please read the <a class="reference internal" href="INTRO.html#naming-convention"><span class="std std-ref">Naming Convention</span></a> section prior to making a
-contribuition and refer to the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/blob/main/scripts/YaML.md">YAML syntax</a> for specifics of how to define
-the required constructs.</p>
+contribution and refer to the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/blob/main/scripts/YaML.md">YAML syntax</a> for specifics of how to define the
+required constructs.</p>
 <p>When writing <code class="docutils literal notranslate"><span class="pre">*.yml</span></code> files and <code class="docutils literal notranslate"><span class="pre">ur</span></code> or <code class="docutils literal notranslate"><span class="pre">UR</span></code> should exist in the output
 use <code class="docutils literal notranslate"><span class="pre">$x</span></code> or <code class="docutils literal notranslate"><span class="pre">$X</span></code> respectively. These will be replaced while
 <a class="reference internal" href="#generating-source">Generating Source</a>.</p>
@@ -420,8 +420,8 @@ arguments:</p>
 <li><p>Arguments with pointer types are prefixed with <code class="docutils literal notranslate"><span class="pre">p</span></code> for each pointer in
 the type i.e. <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*pMessage</span></code>, <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">**ppMessage</span></code>, etc.</p></li>
 <li><p>Handle arguments are prefixed with <code class="docutils literal notranslate"><span class="pre">h</span></code> i.e. <code class="docutils literal notranslate"><span class="pre">hQueue</span></code>.</p></li>
-<li><p>Pointer to handle arguments, such as out parameters, are prefix with <code class="docutils literal notranslate"><span class="pre">ph</span></code>
-i.e. <code class="docutils literal notranslate"><span class="pre">phQueue</span></code>.</p></li>
+<li><p>Pointer to handle arguments, such as out parameters, are prefixed with
+<code class="docutils literal notranslate"><span class="pre">ph</span></code> i.e. <code class="docutils literal notranslate"><span class="pre">phQueue</span></code>.</p></li>
 </ul>
 </div>
 <div class="section" id="forks-and-pull-requests">
@@ -449,13 +449,13 @@ if any.</p>
 <p>A core feature <em>must</em> have a stable API/ABI and <em>should</em> strive to be supported
 across all adapters. However, core features <em>may</em> be optional and thus only
 supported in one or more adapters. A core feature <em>should</em> also strive to
-enable similar functionality in parallel language runtime (such as SYCL,
+enable similar functionality in parallel language runtimes (such as SYCL,
 OpenMP, …) where possible although this is a secondary concern.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Optional features should be avoided as much as possible to maximize
-portability across adapters and reducing the overhead required to use make
-use of features in parallel language runtimes.</p>
+portability across adapters and reduce the overhead required to make use of
+features in parallel language runtimes.</p>
 </div>
 <p>Core features are defined in the <code class="docutils literal notranslate"><span class="pre">*.yml</span></code> files in the <a class="reference external" href="https://github.com/oneapi-src/unified-runtime/tree/main/scripts/core">scripts/core</a>
 directory. Most of the files are named after the API object who’s interface is
