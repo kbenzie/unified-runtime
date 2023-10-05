@@ -46,12 +46,10 @@ urAdapterGet(uint32_t NumEntries, ur_adapter_handle_t *phAdapters,
       if (!adapter.platform) {
         static ur_platform_handle_t_ platform;
         adapter.platform = &platform;
+        // TODO: Support multi-device configs.
         static ur_device_handle_t_ device{};
         adapter.platform->device = &device;
         adapter.platform->device->mDevice = MTL::CreateSystemDefaultDevice();
-        if (!adapter.platform->device) {
-          throw UR_RESULT_ERROR_DEVICE_LOST;
-        }
       }
     });
   } catch (const ur_result_t &error) {

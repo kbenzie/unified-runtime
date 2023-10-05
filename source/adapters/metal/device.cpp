@@ -436,6 +436,8 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
   case UR_DEVICE_INFO_INTEROP_SEMAPHORE_EXPORT_SUPPORT_EXP: // ur_bool_t
     break;
 
+  case UR_DEVICE_INFO_ESIMD_SUPPORT: // ur_boot_t
+    break;
 
   case UR_DEVICE_INFO_FORCE_UINT32:
     std::abort();
@@ -444,25 +446,11 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
 }
 
 UR_APIEXPORT ur_result_t UR_APICALL urDeviceRetain(ur_device_handle_t hDevice) {
-  switch (hDevice->origin) {
-  case ur_device_handle_t_::INTERNAL:
-    break;
-  case ur_device_handle_t_::NATIVE_HANDLE:
-    hDevice->retain();
-    break;
-  }
   return UR_RESULT_SUCCESS;
 }
 
 UR_APIEXPORT ur_result_t UR_APICALL
 urDeviceRelease(ur_device_handle_t hDevice) {
-  switch (hDevice->origin) {
-  case ur_device_handle_t_::INTERNAL:
-    break;
-  case ur_device_handle_t_::NATIVE_HANDLE:
-    hDevice->release();
-    break;
-  }
   return UR_RESULT_SUCCESS;
 }
 
@@ -481,14 +469,21 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceSelectBinary(
 
 UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetNativeHandle(
     ur_device_handle_t hDevice, ur_native_handle_t *phNativeDevice) {
-  return UR_RESULT_ERROR_UNSUPPORTED_FEATURE;
+  *phNativeDevice = reinterpret_cast<ur_native_handle_t>(hDevice->mDevice);
+  return UR_RESULT_SUCCESS;
 }
 
 UR_APIEXPORT ur_result_t UR_APICALL urDeviceCreateWithNativeHandle(
     ur_native_handle_t hNativeDevice, ur_platform_handle_t hPlatform,
     const ur_device_native_properties_t *pProperties,
     ur_device_handle_t *phDevice) {
-  return UR_RESULT_ERROR_UNSUPPORTED_FEATURE;
+  auto mDevice = reinterpret_cast<MTL::Device*>(hNativeDevice);
+  // TODO: Support multi-device configs.
+  if (hPlatform->device->mDevice != mDevice) {
+    return UR_RESULT_ERROR_DEVICE_LOST;
+  }
+  *phDevice = hPlatform->device;
+  return UR_RESULT_SUCCESS;
 }
 
 UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetGlobalTimestamps(

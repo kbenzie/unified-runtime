@@ -24,6 +24,7 @@ inline std::string getVersionStr(ur_api_version_t version) {
 } // namespace ur
 
 struct ur_platform_handle_t_ {
+  // TODO: Support multi-device configs.
   ur_device_handle_t device = nullptr;
 
   // ur_platform_info_t

@@ -16,13 +16,7 @@
 #include <Metal/Metal.hpp>
 
 struct ur_device_handle_t_ : ur::refcount {
-  enum origin_t : uint8_t {
-    INTERNAL,
-    NATIVE_HANDLE,
-  };
-
   MTL::Device *mDevice = nullptr;
-  origin_t origin = origin_t::INTERNAL;
 };
 
 #endif // UR_ADADTER_METAL_DEVICE_HPP_INCLUDED
