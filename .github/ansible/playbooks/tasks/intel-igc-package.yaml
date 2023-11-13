@@ -1,0 +1,57 @@
+---
+- name: '{{package_name}}: assert preconditions'
+  assert:
+    that:
+      - "'packages' in ansible_facts"
+      - igc_release is defined
+      - package_name is defined
+
+- name: '{{package_name}}: check if package is installed'
+  set_fact:
+    is_installed: '{{package_name in ansible_facts.packages}}'
+
+- name: '{{package_name}}: get installed package version'
+  when: is_installed
+  set_fact:
+    installed_version:
+      "igc-{{ansible_facts.packages[package_name][0].version}}"
+
+- name: '{{package_name}}: check if package needs updated'
+  when: is_installed
+  set_fact:
+    needs_updated: '{{installed_version != igc_release.name}}'
+
+- name: '{{package_name}}: uninstall outdated package'
+  become: true
+  when: is_installed and needs_updated
+  apt:
+    name: '{{package_name}}'
+    state: absent
+
+- name: '{{package_name}}: construct asset query'
+  when: not is_installed or needs_updated
+  set_fact:
+    asset_query: '[?contains(name, `{{package_name}}_`)] | [0]'
+
+- name: '{{package_name}}: select asset to download'
+  when: not is_installed or needs_updated
+  set_fact:
+    asset: '{{igc_release.assets | json_query(asset_query)}}'
+
+- name: '{{package_name}}: download deb package file'
+  when: not is_installed or needs_updated
+  get_url:
+    url: '{{asset.browser_download_url}}'
+    dest: '/tmp/{{asset.name}}'
+
+- name: '{{package_name}}: install deb package file'
+  when: not is_installed or needs_updated
+  become: true
+  apt:
+    deb: '/tmp/{{asset.name}}'
+
+- name: '{{package_name}}: remove deb package file'
+  when: not is_installed or needs_updated
+  file:
+    path: '/tmp/{{asset.name}}'
+    state: absent

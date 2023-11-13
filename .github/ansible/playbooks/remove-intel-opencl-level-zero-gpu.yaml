@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: remove apt packages
+      become: true
+      apt:
+        name:
+          - intel-igc-core
+          - intel-igc-opencl
+          - libigdgmm12
+          - intel-level-zero-gpu
+          - intel-opencl-icd
+          - intel-level-zero-gpu-dbgsym
+          - intel-opencl-icd-dbgsym
+        state: absent
