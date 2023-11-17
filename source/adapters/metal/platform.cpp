@@ -10,7 +10,7 @@
 
 #include "platform.hpp"
 #include "adapter.hpp"
-#include "info.hpp"
+#include "ur/ur.hpp"
 
 UR_APIEXPORT ur_result_t UR_APICALL urPlatformGet(
     ur_adapter_handle_t *phAdapters, uint32_t numAdapters, uint32_t numEntries,
@@ -32,23 +32,21 @@ UR_APIEXPORT ur_result_t UR_APICALL urPlatformGet(
 
 UR_APIEXPORT ur_result_t UR_APICALL
 urPlatformGetInfo(ur_platform_handle_t hPlatform, ur_platform_info_t propName,
-                  size_t size, void *pValue, size_t *pSize) {
-  if (!hPlatform) {
-    return UR_RESULT_ERROR_INVALID_PLATFORM;
-  }
+                  size_t propSize, void *pPropValue, size_t *pPropSizeRet) {
+  UrReturnHelper returnValue(propSize, pPropValue, pPropSizeRet);
   switch (propName) {
   case UR_PLATFORM_INFO_NAME:
-    return ur::setInfo(hPlatform->name, size, pValue, pSize);
+    return returnValue(hPlatform->name.c_str());
   case UR_PLATFORM_INFO_VENDOR_NAME:
-    return ur::setInfo(hPlatform->vendorName, size, pValue, pSize);
+    return returnValue(hPlatform->vendorName.c_str());
   case UR_PLATFORM_INFO_VERSION:
-    return ur::setInfo(hPlatform->version, size, pValue, pSize);
+    return returnValue(hPlatform->version.c_str());
   case UR_PLATFORM_INFO_EXTENSIONS:
-    return ur::setInfo(hPlatform->extensions, size, pValue, pSize);
+    return returnValue(hPlatform->extensions.c_str());
   case UR_PLATFORM_INFO_PROFILE:
-    return ur::setInfo(hPlatform->profile, size, pValue, pSize);
+    return returnValue(hPlatform->profile.c_str());
   case UR_PLATFORM_INFO_BACKEND:
-    return ur::setInfo(UR_PLATFORM_BACKEND_UNKNOWN, size, pValue, pSize);
+    return returnValue(UR_PLATFORM_BACKEND_UNKNOWN);
   default:
     return UR_RESULT_ERROR_INVALID_ENUMERATION;
   }

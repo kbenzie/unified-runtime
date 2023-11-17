@@ -28,7 +28,7 @@ struct ur_platform_handle_t_ {
   ur_device_handle_t device = nullptr;
 
   // ur_platform_info_t
-  std::string name = "Apple macOS";
+  std::string name = "Apple macOS " UR_ADAPTER_METAL_MACOS_VERSION;
   std::string vendorName = "Apple";
   std::string version = ur::getVersionStr(UR_API_VERSION_CURRENT);
   std::string extensions = "";
