@@ -49,6 +49,7 @@ urAdapterGet(uint32_t NumEntries, ur_adapter_handle_t *phAdapters,
         // TODO: Support multi-device configs.
         static ur_device_handle_t_ device{};
         adapter.platform->device = &device;
+        adapter.platform->device->platform = adapter.platform;
         adapter.platform->device->mDevice = MTL::CreateSystemDefaultDevice();
       }
     });

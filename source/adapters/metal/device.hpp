@@ -16,6 +16,7 @@
 #include <Metal/Metal.hpp>
 
 struct ur_device_handle_t_ : ur::refcount {
+  ur_platform_handle_t platform = nullptr;
   MTL::Device *mDevice = nullptr;
 };
 
