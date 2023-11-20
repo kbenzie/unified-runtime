@@ -44,6 +44,7 @@ target_link_libraries(metal-cpp INTERFACE
 
 add_library(ur_adapter_metal SHARED
   adapter.hpp adapter.cpp
+  context.hpp context.cpp
   ddi.cpp
   device.hpp device.cpp
   platform.hpp platform.cpp

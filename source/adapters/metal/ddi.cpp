@@ -61,13 +61,13 @@ UR_DLLEXPORT ur_result_t UR_APICALL urGetContextProcAddrTable(
   if (UR_API_VERSION_CURRENT < version) {
     return UR_RESULT_ERROR_UNSUPPORTED_VERSION;
   }
-  pDdiTable->pfnCreate = nullptr;
-  pDdiTable->pfnRetain = nullptr;
-  pDdiTable->pfnRelease = nullptr;
-  pDdiTable->pfnGetInfo = nullptr;
-  pDdiTable->pfnGetNativeHandle = nullptr;
-  pDdiTable->pfnCreateWithNativeHandle = nullptr;
-  pDdiTable->pfnSetExtendedDeleter = nullptr;
+  pDdiTable->pfnCreate = urContextCreate;
+  pDdiTable->pfnRetain = urContextRetain;
+  pDdiTable->pfnRelease = urContextRelease;
+  pDdiTable->pfnGetInfo = urContextGetInfo;
+  pDdiTable->pfnGetNativeHandle = urContextGetNativeHandle;
+  pDdiTable->pfnCreateWithNativeHandle = urContextCreateWithNativeHandle;
+  pDdiTable->pfnSetExtendedDeleter = urContextSetExtendedDeleter;
   return UR_RESULT_SUCCESS;
 }
 
