@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+
+  vars:
+    # The tag of a release from https://github.com/intel/llvm/releases with the
+    # name "oneAPI DPC++ Compiler dependencies"
+    INTEL_LLVM_DEPS_TAG: 2023-WW27
+    # TODO: "url": "https://github.com/oneapi-src/oneTBB/releases/download/v2021.10.0/oneapi-tbb-2021.10.0-lin.tgz",
+    ONETBB_VERSION: 2021.10.0
+
+  tasks:
+    # TODO: check the operating system is supported
+
+    - name: install intel opencl cpu driver
+      include_tasks: tasks/intel-opencl-cpu.yaml
+
+    - name: install intel onetbb library
+      include_tasks: tasks/intel-onetbb.yaml

@@ -1,0 +1,63 @@
+---
+- name: 'opencl cpu: assert preconditions'
+  assert:
+    that:
+      - INTEL_LLVM_DEPS_TAG is defined
+
+- name: 'opencl cpu: get intel/llvm release by tag'
+  uri:
+    url: https://api.github.com/repos/intel/llvm/releases/tags/{{INTEL_LLVM_DEPS_TAG}}
+  register: release
+
+- name: 'opencl cpu: construct query for the driver asset'
+  set_fact:
+    asset_query:
+      '[?contains(name, `oclcpuexp-`)] | [?contains(name, `_rel.tar.gz`)] | [0]'
+
+- name: 'opencl cpu: search for the driver asset'
+  set_fact:
+    asset:
+      '{{release.json.assets | json_query(asset_query)}}'
+
+- name: 'opencl cpu: get name & path for driver directory'
+  set_fact:
+    name: "{{asset.name | regex_replace('_.*$', '')}}"
+    path: "/opt/intel/{{asset.name | regex_replace('_.*$', '')}}"
+
+- name: 'opencl cpu: create the driver directory'
+  become: true
+  file:
+    state: directory
+    path: '{{path}}'
+
+- name: 'opencl cpu: download driver archive'
+  become: true
+  get_url:
+    url: '{{asset.browser_download_url}}'
+    dest: '{{path}}/{{asset.name}}'
+
+- name: 'opencl cpu: exctract driver archive'
+  become: true
+  unarchive:
+    src: '{{path}}/{{asset.name}}'
+    dest: '{{path}}'
+
+- name: 'opencl cpu: remove driver archive'
+  become: true
+  file:
+    state: absent
+    path: '{{path}}/{{asset.name}}'
+
+- name: 'opencl cpu: create icd file'
+  become: true
+  copy:
+    content: |
+      {{path}}/x64/libintelocl.so
+    dest: /etc/OpenCL/vendors/intel_expcpu.icd
+
+- name: 'opencl cpu: configure library paths'
+  become: true
+  copy:
+    content: |
+      {{path}}/x86
+    dest: /etc/ld.so.conf.d/libintelopenclexp.conf
