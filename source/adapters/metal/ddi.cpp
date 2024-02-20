@@ -15,8 +15,6 @@ UR_DLLEXPORT ur_result_t UR_APICALL urGetGlobalProcAddrTable(
   if (UR_API_VERSION_CURRENT < version) {
     return UR_RESULT_ERROR_UNSUPPORTED_VERSION;
   }
-  pDdiTable->pfnInit = urInit;
-  pDdiTable->pfnTearDown = urTearDown;
   pDdiTable->pfnAdapterGet = urAdapterGet;
   pDdiTable->pfnAdapterRelease = urAdapterRelease;
   pDdiTable->pfnAdapterRetain = urAdapterRetain;

@@ -38,16 +38,6 @@ ur_adapter_handle_t_::last_error_t ur_adapter_handle_t_::getLastError() {
 }
 
 UR_APIEXPORT ur_result_t UR_APICALL
-urInit(ur_device_init_flags_t device_flags,
-       ur_loader_config_handle_t hLoaderConfig) {
-  return UR_RESULT_SUCCESS;
-}
-
-UR_APIEXPORT ur_result_t UR_APICALL urTearDown(void *pParams) {
-  return UR_RESULT_SUCCESS;
-}
-
-UR_APIEXPORT ur_result_t UR_APICALL
 urAdapterGet(uint32_t NumEntries, ur_adapter_handle_t *phAdapters,
              uint32_t *pNumAdapters) {
   static std::once_flag onceFlag;
