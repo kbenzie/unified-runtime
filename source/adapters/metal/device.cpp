@@ -484,8 +484,16 @@ UR_APIEXPORT ur_result_t UR_APICALL urDevicePartition(
 
 UR_APIEXPORT ur_result_t UR_APICALL urDeviceSelectBinary(
     ur_device_handle_t hDevice, const ur_device_binary_t *pBinaries,
-    uint32_t NumBinaries, uint32_t *pSelectedBinary) {
-  return UR_RESULT_ERROR_UNSUPPORTED_FEATURE;
+    uint32_t numBinaries, uint32_t *pSelectedBinary) {
+  for (uint32_t index = 0; index < numBinaries; index++) {
+    if (std::strncmp(pBinaries[index].pDeviceTargetSpec,
+                     UR_DEVICE_BINARY_TARGET_SPIRV64,
+                     sizeof(UR_DEVICE_BINARY_TARGET_SPIRV64)) == 0) {
+      *pSelectedBinary = index;
+      return UR_RESULT_SUCCESS;
+    }
+  }
+  return UR_RESULT_ERROR_INVALID_BINARY;
 }
 
 UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetNativeHandle(
