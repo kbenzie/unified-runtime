@@ -201,8 +201,13 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
   case UR_DEVICE_INFO_HOST_UNIFIED_MEMORY: // ur_bool_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
-  case UR_DEVICE_INFO_PROFILING_TIMER_RESOLUTION: // size_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+  case UR_DEVICE_INFO_PROFILING_TIMER_RESOLUTION: {
+    // FIXME: This is almost certainly wrong, can't find anything in the Metal
+    // docs describing what this might be though. Setting to 1 so testing can
+    // use a value.
+    size_t profilingTimeerResolution = 1;
+    return returnValue(profilingTimeerResolution);
+  }
 
   case UR_DEVICE_INFO_ENDIAN_LITTLE: // ur_bool_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
@@ -505,5 +510,9 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceCreateWithNativeHandle(
 UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetGlobalTimestamps(
     ur_device_handle_t hDevice, uint64_t *pDeviceTimestamp,
     uint64_t *pHostTimestamp) {
-  return UR_RESULT_ERROR_UNSUPPORTED_FEATURE;
+  MTL::Timestamp cpuTimestamp, gpuTimestamp;
+  hDevice->mDevice->sampleTimestamps(
+      pHostTimestamp ? pHostTimestamp : &cpuTimestamp,
+      pDeviceTimestamp ? pDeviceTimestamp : &gpuTimestamp);
+  return UR_RESULT_SUCCESS;
 }
