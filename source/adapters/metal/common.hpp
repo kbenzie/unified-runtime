@@ -15,19 +15,13 @@
 
 namespace ur {
 struct refcount {
-  uint32_t retain() {
-    return ++refCount;
-  }
-  uint32_t release() {
-    return --refCount;
-  }
-  uint32_t getRefCount() const {
-    return refCount;
-  }
+  uint32_t retain() { return ++refCount; }
+  uint32_t release() { return --refCount; }
+  uint32_t getRefCount() const { return refCount; }
 
 private:
   std::atomic_uint32_t refCount = 1;
 };
 } // namespace ur
 
-#endif  // UR_ADPATER_METAL_COMMON_HPP_INCLUDED
+#endif // UR_ADPATER_METAL_COMMON_HPP_INCLUDED

@@ -32,4 +32,4 @@ struct ur_context_handle_t_ : ur::refcount {
   }
 };
 
-#endif  // UR_ADAPTER_METLAL_CONTEXT_HPP_INCLUDED
+#endif // UR_ADAPTER_METLAL_CONTEXT_HPP_INCLUDED

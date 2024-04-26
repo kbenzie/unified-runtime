@@ -95,7 +95,7 @@ urContextGetInfo(ur_context_handle_t hContext, ur_context_info_t propName,
     return returnValue(0);
 
   case UR_CONTEXT_INFO_FORCE_UINT32:
-    std::abort();
+    ur::unreachable();
   }
 
   return UR_RESULT_SUCCESS;

@@ -12,7 +12,8 @@
 #define UR_ADAPTER_METAL_HPP_INCLUDED
 
 #include "common.hpp"
-#include "platform.hpp"
+#include "ur_api.h"
+#include <string>
 
 struct ur_adapter_handle_t_ : ur::refcount {
   struct last_error_t {
@@ -33,4 +34,4 @@ struct ur_adapter_handle_t_ : ur::refcount {
 
 extern ur_adapter_handle_t_ adapter;
 
-#endif  // UR_ADAPTER_METAL_HPP_INCLUDED
+#endif // UR_ADAPTER_METAL_HPP_INCLUDED

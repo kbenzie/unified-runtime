@@ -10,8 +10,9 @@
 
 #include "adapter.hpp"
 #include "device.hpp"
+#include "platform.hpp"
+#include "ur_util.hpp"
 
-#include <iostream>
 #include <mutex>
 
 ur_adapter_handle_t_ adapter{};
@@ -107,7 +108,7 @@ urAdapterGetInfo(ur_adapter_handle_t hAdapter, ur_adapter_info_t propName,
     }
     break;
   case UR_ADAPTER_INFO_FORCE_UINT32:
-    std::abort();
+    ur::unreachable();
   }
   return UR_RESULT_SUCCESS;
 }

@@ -9,7 +9,6 @@
 //===----------------------------------------------------------------------===//
 
 #include "device.hpp"
-#include "adapter.hpp"
 #include "platform.hpp"
 #include "ur/ur.hpp"
 
@@ -460,9 +459,16 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
   case UR_DEVICE_INFO_INTEROP_SEMAPHORE_EXPORT_SUPPORT_EXP: // ur_bool_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
+  case UR_DEVICE_INFO_CUBEMAP_SUPPORT_EXP: // ur_bool_t
+    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+
+  case UR_DEVICE_INFO_CUBEMAP_SEAMLESS_FILTERING_SUPPORT_EXP: // ur_bool_t
+    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+
   case UR_DEVICE_INFO_FORCE_UINT32:
-    std::abort();
+    ur::unreachable();
   }
+
   return UR_RESULT_SUCCESS;
 }
 
