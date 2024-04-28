@@ -16,5 +16,6 @@
    core/CONTRIB.rst
    core/CUDA.rst
    core/HIP.rst
+   core/Metal.rst
    exp-features.rst
    api.rst

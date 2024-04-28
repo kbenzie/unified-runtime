@@ -49,6 +49,7 @@ add_library(ur_adapter_metal SHARED
   context.hpp context.cpp
   ddi.cpp
   device.hpp device.cpp
+  memory.hpp memory.cpp
   platform.hpp platform.cpp
   ${PROJECT_SOURCE_DIR}/source/ur/ur.hpp ${PROJECT_SOURCE_DIR}/source/ur/ur.cpp
 )
