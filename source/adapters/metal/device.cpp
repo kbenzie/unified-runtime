@@ -126,7 +126,7 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
   case UR_DEVICE_INFO_IMAGE_SUPPORTED: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_MAX_READ_IMAGE_ARGS: // uint32_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
@@ -382,10 +382,10 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
   case UR_DEVICE_INFO_MEM_CHANNEL_SUPPORT: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_HOST_PIPE_READ_WRITE_SUPPORTED: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_MAX_REGISTERS_PER_WORK_GROUP: // uint32_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
@@ -394,10 +394,10 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
   case UR_DEVICE_INFO_VIRTUAL_MEMORY_SUPPORT: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_ESIMD_SUPPORT: // ur_boot_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_COMPONENT_DEVICES: // ur_device_handle_t[]
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
@@ -406,22 +406,22 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
   case UR_DEVICE_INFO_COMMAND_BUFFER_SUPPORT_EXP: // ur_boot_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_COMMAND_BUFFER_UPDATE_SUPPORT_EXP: // ur_boot_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_BINDLESS_IMAGES_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_BINDLESS_IMAGES_SHARED_USM_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_BINDLESS_IMAGES_1D_USM_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_BINDLESS_IMAGES_2D_USM_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_IMAGE_PITCH_ALIGN_EXP: // uint32_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
@@ -436,34 +436,34 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
   case UR_DEVICE_INFO_MIPMAP_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_MIPMAP_ANISOTROPY_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_MIPMAP_MAX_ANISOTROPY_EXP: // uint32_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
   case UR_DEVICE_INFO_MIPMAP_LEVEL_REFERENCE_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_INTEROP_MEMORY_IMPORT_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_INTEROP_MEMORY_EXPORT_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_INTEROP_SEMAPHORE_IMPORT_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_INTEROP_SEMAPHORE_EXPORT_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_CUBEMAP_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_CUBEMAP_SEAMLESS_FILTERING_SUPPORT_EXP: // ur_bool_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+    return returnValue(false);
 
   case UR_DEVICE_INFO_FORCE_UINT32:
     ur::unreachable();
