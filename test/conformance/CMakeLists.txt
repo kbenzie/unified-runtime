@@ -76,10 +76,14 @@ function(add_conformance_test name)
     if(UR_BUILD_ADAPTER_NATIVE_CPU OR UR_BUILD_ADAPTER_ALL)
         add_test_adapter(${name} adapter_native_cpu)
     endif()
+    if(UR_BUILD_ADAPTER_METAL OR UR_BUILD_ADAPTER_ALL)
+        add_test_adapter(${name} adapter_metal)
+    endif()
 
     if(NOT (UR_BUILD_ADAPTER_CUDA OR UR_BUILD_ADAPTER_HIP
             OR UR_BUILD_ADAPTER_L0 OR UR_BUILD_ADAPTER_OPENCL
-            OR UR_BUILD_ADAPTER_NATIVE_CPU OR UR_BUILD_ADAPTER_ALL))
+            OR UR_BUILD_ADAPTER_NATIVE_CPU OR UR_BUILD_ADAPTER_METAL
+            OR UR_BUILD_ADAPTER_ALL))
         add_test_adapter(${name} adapter_null)
     endif()
 endfunction()

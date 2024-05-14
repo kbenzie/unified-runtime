@@ -1,0 +1,11 @@
+urMemGetInfoTest.Success/{{.*}}
+urMemGetInfoTest.Success/{{.*}}
+urMemGetInfoTest.InvalidSizeSmall/{{.*}}
+urMemGetInfoTest.InvalidSizeSmall/{{.*}}
+urMemImageCreateTest.Success/{{.*}}
+urMemImageCreateTest.InvalidSize/{{.*}}
+urMemImageCreateTest.InvalidImageDescStype/{{.*}}
+urMemImageCreateTest.InvalidImageDescNumMipLevel/{{.*}}
+urMemImageCreateTest.InvalidImageDescNumSamples/{{.*}}
+urMemImageCreateTest.InvalidImageDescRowPitch/{{.*}}
+urMemImageCreateTest.InvalidImageDescSlicePitch/{{.*}}
