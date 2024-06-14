@@ -64,7 +64,7 @@ UR_APIEXPORT ur_result_t UR_APICALL urPlatformGetNativeHandle(
 }
 
 UR_APIEXPORT ur_result_t UR_APICALL urPlatformCreateWithNativeHandle(
-    ur_native_handle_t hNativePlatform,
+    ur_native_handle_t hNativePlatform, ur_adapter_handle_t hAdatper,
     const ur_platform_native_properties_t *pProperties,
     ur_platform_handle_t *phPlatform) {
   return UR_RESULT_ERROR_UNSUPPORTED_FEATURE;
