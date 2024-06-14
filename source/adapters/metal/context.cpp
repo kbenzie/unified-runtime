@@ -71,7 +71,7 @@ urContextGetInfo(ur_context_handle_t hContext, ur_context_info_t propName,
     return returnValue(1);
 
   case UR_CONTEXT_INFO_DEVICES:
-    return returnValue(&hContext->device);
+    return returnValue(hContext->device);
 
   case UR_CONTEXT_INFO_REFERENCE_COUNT:
     return returnValue(hContext->getRefCount());

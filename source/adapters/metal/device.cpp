@@ -53,11 +53,25 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
   case UR_DEVICE_INFO_MAX_WORK_ITEM_DIMENSIONS: // uint32_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
-  case UR_DEVICE_INFO_MAX_WORK_ITEM_SIZES: // size_t[]
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+  case UR_DEVICE_INFO_MAX_WORK_ITEM_SIZES: { // size_t[]
+    const MTL::Size maxThreadsPerThreadgroup =
+        hDevice->mDevice->maxThreadsPerThreadgroup();
+    std::array<size_t, 3> workItemSizes = {
+        maxThreadsPerThreadgroup.width,
+        maxThreadsPerThreadgroup.height,
+        maxThreadsPerThreadgroup.depth,
+    };
+    return returnValue(workItemSizes);
+  };
 
-  case UR_DEVICE_INFO_MAX_WORK_GROUP_SIZE: // size_t
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+  case UR_DEVICE_INFO_MAX_WORK_GROUP_SIZE: { // size_t
+    const MTL::Size maxThreadsPerThreadgroup =
+        hDevice->mDevice->maxThreadsPerThreadgroup();
+    size_t maxWorkGroupSize = maxThreadsPerThreadgroup.width *
+                              maxThreadsPerThreadgroup.height *
+                              maxThreadsPerThreadgroup.depth;
+    return returnValue(maxWorkGroupSize);
+  }
 
   case UR_DEVICE_INFO_SINGLE_FP_CONFIG: // ur_device_fp_capability_flags_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
@@ -375,8 +389,16 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceGetInfo(ur_device_handle_t hDevice,
   case UR_DEVICE_INFO_MEMORY_BUS_WIDTH: // uint32_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
 
-  case UR_DEVICE_INFO_MAX_WORK_GROUPS_3D: // size_t[3]
-    return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
+  case UR_DEVICE_INFO_MAX_WORK_GROUPS_3D: {
+    // NOTE: Metal does not have an equivelent query, copy the OpenCL adapter
+    // and use the max value of size_t for each dimension.
+    std::array<size_t, 3> maxWorkGroups3D = {
+        std::numeric_limits<size_t>::max(),
+        std::numeric_limits<size_t>::max(),
+        std::numeric_limits<size_t>::max(),
+    };
+    return returnValue(maxWorkGroups3D);
+  }
 
   case UR_DEVICE_INFO_ASYNC_BARRIER: // ur_bool_t
     return UR_RESULT_ERROR_UNSUPPORTED_ENUMERATION;
@@ -533,6 +555,9 @@ UR_APIEXPORT ur_result_t UR_APICALL urDeviceCreateWithNativeHandle(
     ur_native_handle_t hNativeDevice, ur_platform_handle_t hPlatform,
     const ur_device_native_properties_t *pProperties,
     ur_device_handle_t *phDevice) {
+  if (pProperties && pProperties->isNativeHandleOwned == false) {
+    return UR_RESULT_ERROR_UNSUPPORTED_FEATURE;
+  }
   auto mDevice = reinterpret_cast<MTL::Device *>(hNativeDevice);
   // TODO: Support multi-device configs.
   if (hPlatform->device->mDevice != mDevice) {
