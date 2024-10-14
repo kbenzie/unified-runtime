@@ -97,25 +97,31 @@ function(add_ur_target_compile_options name)
     elseif(MSVC)
         target_compile_options(${name} PRIVATE
             $<$<CXX_COMPILER_ID:MSVC>:/MP>  # clang-cl.exe does not support /MP
-            /W4
+            /MD$<$<CONFIG:Debug>:d>
+
+            /W4     # Enable: Warning level 4
+            /GS     # Enable: Buffer security check
+            /Gy     # Enable: Function-level linking
+
+            $<$<CONFIG:Release>:/sdl>             # Enable: Additional SDL checks
+            $<$<CXX_COMPILER_ID:MSVC>:/Qspectre>  # Enable: Mitigate Spectre variant 1 vulnerabilities
+
             /wd4456  # Disable: declaration of 'identifier' hides previous local declaration
             /wd4457  # Disable: declaration of 'identifier' hides function parameter
             /wd4458  # Disable: declaration of 'identifier' hides class member
             /wd4459  # Disable: declaration of 'identifier' hides global declaration
-            /MD$<$<CONFIG:Debug>:d>
-            /GS
-            /DWIN32_LEAN_AND_MEAN
-            /DNOMINMAX
+            /wd6244  # Disable: local declaration of 'variable' hides previous declaration
+            /wd6246  # Disable: local declaration of 'variable' hides declaration of same name in outer scope
         )
 
         target_compile_definitions(${name} PRIVATE
-            # _CRT_SECURE_NO_WARNINGS used mainly because of getenv
-            _CRT_SECURE_NO_WARNINGS
+            WIN32_LEAN_AND_MEAN NOMINMAX  # Cajole Windows.h to define fewer symbols
+            _CRT_SECURE_NO_WARNINGS       # Slience warnings about getenv
         )
 
         if(UR_DEVELOPER_MODE)
             target_compile_options(${name} PRIVATE
-                /WX /GS
+                /WX  # Enable: Treat all warnings as errors
             )
         endif()
     endif()
@@ -136,9 +142,12 @@ function(add_ur_target_link_options name)
         endif()
     elseif(MSVC)
         target_link_options(${name} PRIVATE
-            /DYNAMICBASE
-            /HIGHENTROPYVA
-            /NXCOMPAT
+            /DYNAMICBASE    # Enable: Modify header to indicate ASLR should be use
+            /HIGHENTROPYVA  # Enable: High-entropy address space layout randomization (ASLR)
+            $<$<CONFIG:Release>:
+                /NXCOMPAT   # Enable: Data Execution Prevention
+                /LTCG       # Enable: Link-time code generation
+            >
         )
     endif()
 endfunction()
