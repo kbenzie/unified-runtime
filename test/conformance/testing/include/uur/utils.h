@@ -435,7 +435,7 @@ decodeSemVersion(std::string version) {
 
 inline bool isGivenAdapter(ur_platform_handle_t hPlatform,
                            std::string adapterName) {
-    size_t psize;
+    size_t psize = 0;
     EXPECT_EQ(
         urPlatformGetInfo(hPlatform, UR_PLATFORM_INFO_NAME, 0, nullptr, &psize),
         UR_RESULT_SUCCESS);
@@ -486,7 +486,7 @@ getDriverVersion(ur_device_handle_t hDevice) {
 // https://spec.oneapi.io/level-zero/latest/core/api.html#ze-device-ip-version-ext-t
 // when that is stable.
 static inline bool isPVC(ur_device_handle_t hDevice) {
-    uint32_t deviceId;
+    uint32_t deviceId = 0;
     EXPECT_EQ(urDeviceGetInfo(hDevice, UR_DEVICE_INFO_DEVICE_ID,
                               sizeof(uint32_t), &deviceId, nullptr),
               UR_RESULT_SUCCESS);

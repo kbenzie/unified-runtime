@@ -689,7 +689,7 @@ ur_result_t urDeviceGetInfo(
     uint32_t SpirvVersionMinor = ZE_MINOR_VERSION(SpirvVersion);
 
     char SpirvVersionString[50];
-    int Len = sprintf(SpirvVersionString, "SPIR-V_%d.%d ", SpirvVersionMajor,
+    int Len = sprintf(SpirvVersionString, "SPIR-V_%u.%u ", SpirvVersionMajor,
                       SpirvVersionMinor);
     // returned string to contain only len number of characters.
     std::string ILVersion(SpirvVersionString, Len);

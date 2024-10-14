@@ -377,7 +377,11 @@ struct urHostPipeTest : urQueueTest {
             &size));
         ASSERT_NE(size, 0);
         ASSERT_EQ(sizeof(ur_bool_t), size);
+#if _MSC_VER
+        void *info_data = _malloca(size);
+#else
         void *info_data = alloca(size);
+#endif
         ASSERT_SUCCESS(urDeviceGetInfo(
             device, UR_DEVICE_INFO_HOST_PIPE_READ_WRITE_SUPPORTED, size,
             info_data, nullptr));
@@ -1153,7 +1157,7 @@ struct urProgramTest : urQueueTest {
     void SetUp() override {
         UUR_RETURN_ON_FATAL_FAILURE(urQueueTest::SetUp());
 
-        ur_platform_backend_t backend;
+        ur_platform_backend_t backend = UR_PLATFORM_BACKEND_UNKNOWN;
         ASSERT_SUCCESS(urPlatformGetInfo(platform, UR_PLATFORM_INFO_BACKEND,
                                          sizeof(backend), &backend, nullptr));
         // Images and samplers are not available on AMD
@@ -1327,7 +1331,7 @@ struct KernelLaunchHelper {
         // the AMD backend handles this differently and uses three separate
         // arguments for each of the three dimensions of the accessor.
 
-        ur_platform_backend_t backend;
+        ur_platform_backend_t backend = UR_PLATFORM_BACKEND_UNKNOWN;
         ASSERT_SUCCESS(urPlatformGetInfo(platform, UR_PLATFORM_INFO_BACKEND,
                                          sizeof(backend), &backend, nullptr));
         if (backend == UR_PLATFORM_BACKEND_HIP) {

@@ -38,7 +38,7 @@ struct valAdaptersTest : urTest {
     void SetUp() override {
         urTest::SetUp();
 
-        uint32_t adapter_count;
+        uint32_t adapter_count = 0;
         ASSERT_EQ(urAdapterGet(0, nullptr, &adapter_count), UR_RESULT_SUCCESS);
         ASSERT_GT(adapter_count, 0);
         adapters.resize(adapter_count);
@@ -71,7 +71,7 @@ struct valPlatformsTest : valAdaptersTest {
     void SetUp() override {
         valAdaptersTest::SetUp();
 
-        uint32_t count;
+        uint32_t count = 0;
         ASSERT_EQ(urPlatformGet(adapters.data(),
                                 static_cast<uint32_t>(adapters.size()), 0,
                                 nullptr, &count),

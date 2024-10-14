@@ -17,7 +17,14 @@ set(UR_TEST_FUZZTESTS ON CACHE BOOL "Run fuzz tests if using clang and UR_DPCXX 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 set(INSTALL_GTEST OFF)
 FetchContent_MakeAvailable(googletest)
+
 enable_testing()
+
+add_compile_options(
+    $<$<CXX_COMPILER_ID:MSVC>:/wd6326>  # Disable for gtest.h: potential
+                                        # comparison of a constant with another
+                                        # constant
+)
 
 # Conformance defines the generate_device_binaries target which should be
 # imported first

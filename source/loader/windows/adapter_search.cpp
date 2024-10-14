@@ -16,6 +16,8 @@
 #include "ur_filesystem_resolved.hpp"
 #include "ur_loader.hpp"
 
+#include <vector>
+
 #define MAX_PATH_LEN_WIN 32767
 
 namespace fs = filesystem;
@@ -24,14 +26,14 @@ namespace ur_loader {
 
 std::optional<fs::path> getLoaderLibPath() {
     HMODULE hModule = NULL;
-    char pathStr[MAX_PATH_LEN_WIN];
+    std::vector<char> pathStr(MAX_PATH_LEN_WIN);
 
     if (GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS |
                               GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
                           reinterpret_cast<LPCSTR>(&getLoaderLibPath),
                           &hModule) &&
-        GetModuleFileNameA(hModule, pathStr, MAX_PATH_LEN_WIN)) {
-        auto libPath = fs::path(pathStr);
+        GetModuleFileNameA(hModule, pathStr.data(), MAX_PATH_LEN_WIN)) {
+        auto libPath = fs::path(pathStr.data());
         if (fs::exists(libPath)) {
             return fs::absolute(libPath).parent_path();
         }

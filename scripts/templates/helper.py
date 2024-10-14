@@ -1273,14 +1273,17 @@ def get_pfntables(specs, meta, namespace, tags):
 Public:
     returns an expression setting required output parameters to null on entry
 """
-def get_initial_null_set(obj):
+def get_initial_null_set(obj, check=True):
     cname = obj_traits.class_name(obj)
     lvalue = {
         ('$xProgram', 'Link'): 'phProgram',
         ('$xProgram', 'LinkExp'): 'phProgram',
     }.get((cname, obj['name']))
     if lvalue is not None:
-        return 'if (nullptr != {0}) {{*{0} = nullptr;}}'.format(lvalue)
+        if check:
+            return 'if (nullptr != {0}) {{*{0} = nullptr;}}'.format(lvalue)
+        else:
+            return '*{0} = nullptr;'.format(lvalue)
     return ""
 
 """

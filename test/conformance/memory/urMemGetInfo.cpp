@@ -20,7 +20,7 @@ UUR_TEST_SUITE_P(urMemGetInfoTest, ::testing::ValuesIn(mem_info_values),
 
 TEST_P(urMemGetInfoTest, Success) {
     ur_mem_info_t info = getParam();
-    size_t size;
+    size_t size = 0;
     ASSERT_SUCCESS(urMemGetInfo(buffer, info, 0, nullptr, &size));
     ASSERT_NE(size, 0);
 
@@ -96,7 +96,7 @@ UUR_TEST_SUITE_P(urMemGetInfoImageTest, ::testing::ValuesIn(mem_info_values),
 
 TEST_P(urMemGetInfoImageTest, Success) {
     ur_mem_info_t info = getParam();
-    size_t size;
+    size_t size = 0;
     ASSERT_SUCCESS(urMemGetInfo(image, info, 0, nullptr, &size));
     ASSERT_NE(size, 0);
 

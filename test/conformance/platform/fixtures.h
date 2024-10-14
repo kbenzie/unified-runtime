@@ -19,7 +19,7 @@ struct urTest : ::testing::Test {
                                                  "UR_LAYER_FULL_VALIDATION"));
         ASSERT_SUCCESS(urLoaderInit(device_flags, loader_config));
 
-        uint32_t adapter_count;
+        uint32_t adapter_count = 0;
         ASSERT_SUCCESS(urAdapterGet(0, nullptr, &adapter_count));
         adapters.resize(adapter_count);
         ASSERT_SUCCESS(urAdapterGet(adapter_count, adapters.data(), nullptr));
@@ -43,7 +43,7 @@ struct urPlatformsTest : urTest {
 
     void SetUp() override {
         UUR_RETURN_ON_FATAL_FAILURE(urTest::SetUp());
-        uint32_t count;
+        uint32_t count = 0;
         ASSERT_SUCCESS(urPlatformGet(adapters.data(),
                                      static_cast<uint32_t>(adapters.size()), 0,
                                      nullptr, &count));

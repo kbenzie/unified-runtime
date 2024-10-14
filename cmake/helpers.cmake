@@ -104,6 +104,7 @@ function(add_ur_target_compile_options name)
             /Gy     # Enable: Function-level linking
 
             $<$<CONFIG:Release>:/sdl>             # Enable: Additional SDL checks
+            $<$<CXX_COMPILER_ID:MSVC>:/analyze>   # Enable code analysis
             $<$<CXX_COMPILER_ID:MSVC>:/Qspectre>  # Enable: Mitigate Spectre variant 1 vulnerabilities
 
             /wd4456  # Disable: declaration of 'identifier' hides previous local declaration

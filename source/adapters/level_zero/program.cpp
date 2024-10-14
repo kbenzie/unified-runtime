@@ -313,9 +313,7 @@ ur_result_t urProgramLinkExp(
     ur_program_handle_t
         *phProgram ///< [out] pointer to handle of program object created.
 ) {
-  if (nullptr != phProgram) {
-    *phProgram = nullptr;
-  }
+  *phProgram = nullptr;
   for (uint32_t i = 0; i < numDevices; i++) {
     UR_ASSERT(hContext->isValidDevice(phDevices[i]),
               UR_RESULT_ERROR_INVALID_DEVICE);

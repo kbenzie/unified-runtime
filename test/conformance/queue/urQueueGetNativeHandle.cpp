@@ -26,7 +26,7 @@ TEST_P(urQueueGetNativeHandleTest, InvalidNullPointerNativeHandle) {
 }
 
 TEST_P(urQueueGetNativeHandleTest, InOrderQueueSameNativeHandle) {
-    ur_queue_handle_t in_order_queue;
+    ur_queue_handle_t in_order_queue = nullptr;
     ur_native_handle_t native_handle1 = 0, native_handle2 = 0;
     ASSERT_SUCCESS(urQueueCreate(context, device, nullptr, &in_order_queue));
     if (auto error =

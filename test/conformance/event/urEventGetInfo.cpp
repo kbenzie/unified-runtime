@@ -10,7 +10,7 @@ using urEventGetInfoTest = uur::event::urEventTestWithParam<ur_event_info_t>;
 TEST_P(urEventGetInfoTest, Success) {
 
     ur_event_info_t info_type = getParam();
-    size_t size;
+    size_t size = 0;
     ASSERT_SUCCESS(urEventGetInfo(event, info_type, 0, nullptr, &size));
     ASSERT_NE(size, 0);
     std::vector<uint8_t> data(size);
@@ -69,7 +69,7 @@ using urEventGetInfoNegativeTest = uur::event::urEventTest;
 
 TEST_P(urEventGetInfoNegativeTest, InvalidNullHandle) {
     ur_event_info_t info_type = UR_EVENT_INFO_COMMAND_QUEUE;
-    size_t size;
+    size_t size = 0;
     ASSERT_SUCCESS(urEventGetInfo(event, info_type, 0, nullptr, &size));
     ASSERT_NE(size, 0);
     std::vector<uint8_t> data(size);
@@ -81,7 +81,7 @@ TEST_P(urEventGetInfoNegativeTest, InvalidNullHandle) {
 }
 
 TEST_P(urEventGetInfoNegativeTest, InvalidEnumeration) {
-    size_t size;
+    size_t size = 0;
     ASSERT_EQ_RESULT(
         urEventGetInfo(event, UR_EVENT_INFO_FORCE_UINT32, 0, nullptr, &size),
         UR_RESULT_ERROR_INVALID_ENUMERATION);

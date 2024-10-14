@@ -8,7 +8,7 @@
 using urPlatformGetTest = uur::platform::urTest;
 
 TEST_F(urPlatformGetTest, Success) {
-    uint32_t count;
+    uint32_t count = 0;
     ASSERT_SUCCESS(urPlatformGet(adapters.data(),
                                  static_cast<uint32_t>(adapters.size()), 0,
                                  nullptr, &count));
@@ -23,7 +23,7 @@ TEST_F(urPlatformGetTest, Success) {
 }
 
 TEST_F(urPlatformGetTest, InvalidNumEntries) {
-    uint32_t count;
+    uint32_t count = 0;
     ASSERT_SUCCESS(urPlatformGet(adapters.data(),
                                  static_cast<uint32_t>(adapters.size()), 0,
                                  nullptr, &count));
@@ -35,7 +35,7 @@ TEST_F(urPlatformGetTest, InvalidNumEntries) {
 }
 
 TEST_F(urPlatformGetTest, InvalidNullPointer) {
-    uint32_t count;
+    uint32_t count = 0;
     ASSERT_EQ_RESULT(UR_RESULT_ERROR_INVALID_NULL_POINTER,
                      urPlatformGet(nullptr,
                                    static_cast<uint32_t>(adapters.size()), 0,

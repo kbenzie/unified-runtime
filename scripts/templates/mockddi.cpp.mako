@@ -39,7 +39,7 @@ namespace driver
         )
     try {
         ${x}_result_t result = ${X}_RESULT_SUCCESS;
-        ${th.get_initial_null_set(obj)}
+        ${th.get_initial_null_set(obj, check=False)}
 
         ${th.make_pfncb_param_type(n, tags, obj)} params = { &${",&".join(th.make_param_lines(n, tags, obj, format=["name"]))} };
 
@@ -144,7 +144,7 @@ namespace driver
         if(afterCallback) {
             return afterCallback( &params );
         }
-        
+
         return result;
     } catch(...) { return exceptionToResult(std::current_exception()); }
     %if 'condition' in obj:

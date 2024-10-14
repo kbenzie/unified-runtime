@@ -32,7 +32,7 @@ struct urAdapterTest : urTest {
     void SetUp() override {
         UUR_RETURN_ON_FATAL_FAILURE(urTest::SetUp());
 
-        uint32_t adapter_count;
+        uint32_t adapter_count = 0;
         ASSERT_SUCCESS(urAdapterGet(0, nullptr, &adapter_count));
         ASSERT_GT(adapter_count, 0);
         adapters.resize(adapter_count);

@@ -73,7 +73,7 @@ struct urQueueGetInfoDeviceQueueTestWithInfoParam
     : public uur::urContextTestWithParam<ur_queue_info_t> {
     void SetUp() {
         urContextTestWithParam<ur_queue_info_t>::SetUp();
-        ur_queue_flags_t deviceQueueCapabilities;
+        ur_queue_flags_t deviceQueueCapabilities = 0;
         ASSERT_SUCCESS(
             urDeviceGetInfo(device, UR_DEVICE_INFO_QUEUE_ON_DEVICE_PROPERTIES,
                             sizeof(deviceQueueCapabilities),

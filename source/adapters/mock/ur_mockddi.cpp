@@ -3309,9 +3309,7 @@ __urdlllocal ur_result_t UR_APICALL urProgramLink(
         *phProgram ///< [out] pointer to handle of program object created.
     ) try {
     ur_result_t result = UR_RESULT_SUCCESS;
-    if (nullptr != phProgram) {
-        *phProgram = nullptr;
-    }
+    *phProgram = nullptr;
 
     ur_program_link_params_t params = {&hContext, &count, &phPrograms,
                                        &pOptions, &phProgram};
@@ -10265,9 +10263,7 @@ __urdlllocal ur_result_t UR_APICALL urProgramLinkExp(
         *phProgram ///< [out] pointer to handle of program object created.
     ) try {
     ur_result_t result = UR_RESULT_SUCCESS;
-    if (nullptr != phProgram) {
-        *phProgram = nullptr;
-    }
+    *phProgram = nullptr;
 
     ur_program_link_exp_params_t params = {&hContext, &numDevices, &phDevices,
                                            &count,    &phPrograms, &pOptions,

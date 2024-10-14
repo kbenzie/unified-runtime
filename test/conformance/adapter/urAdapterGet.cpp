@@ -8,14 +8,14 @@
 using urAdapterGetTest = uur::runtime::urTest;
 
 TEST_F(urAdapterGetTest, Success) {
-    uint32_t adapter_count;
+    uint32_t adapter_count = 0;
     ASSERT_SUCCESS(urAdapterGet(0, nullptr, &adapter_count));
     std::vector<ur_adapter_handle_t> adapters(adapter_count);
     ASSERT_SUCCESS(urAdapterGet(adapter_count, adapters.data(), nullptr));
 }
 
 TEST_F(urAdapterGetTest, InvalidNumEntries) {
-    uint32_t adapter_count;
+    uint32_t adapter_count = 0;
     ASSERT_SUCCESS(urAdapterGet(0, nullptr, &adapter_count));
     std::vector<ur_adapter_handle_t> adapters(adapter_count);
     ASSERT_EQ(urAdapterGet(0, adapters.data(), nullptr),

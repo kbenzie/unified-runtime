@@ -11,7 +11,7 @@ using urEventGetProfilingInfoTest =
 TEST_P(urEventGetProfilingInfoTest, Success) {
 
     ur_profiling_info_t info_type = getParam();
-    size_t size;
+    size_t size = 0;
     ASSERT_SUCCESS(
         urEventGetProfilingInfo(event, info_type, 0, nullptr, &size));
     ASSERT_EQ(size, 8);
@@ -86,7 +86,7 @@ using urEventGetProfilingInfoNegativeTest = uur::event::urEventTest;
 
 TEST_P(urEventGetProfilingInfoNegativeTest, InvalidNullHandle) {
     ur_profiling_info_t info_type = UR_PROFILING_INFO_COMMAND_QUEUED;
-    size_t size;
+    size_t size = 0;
     ASSERT_SUCCESS(
         urEventGetProfilingInfo(event, info_type, 0, nullptr, &size));
     ASSERT_NE(size, 0);
@@ -99,7 +99,7 @@ TEST_P(urEventGetProfilingInfoNegativeTest, InvalidNullHandle) {
 }
 
 TEST_P(urEventGetProfilingInfoNegativeTest, InvalidEnumeration) {
-    size_t size;
+    size_t size = 0;
     ASSERT_EQ_RESULT(urEventGetProfilingInfo(event,
                                              UR_PROFILING_INFO_FORCE_UINT32, 0,
                                              nullptr, &size),
@@ -108,7 +108,7 @@ TEST_P(urEventGetProfilingInfoNegativeTest, InvalidEnumeration) {
 
 TEST_P(urEventGetProfilingInfoNegativeTest, InvalidValue) {
     ur_profiling_info_t info_type = UR_PROFILING_INFO_COMMAND_QUEUED;
-    size_t size;
+    size_t size = 0;
     ASSERT_SUCCESS(
         urEventGetProfilingInfo(event, info_type, 0, nullptr, &size));
     ASSERT_NE(size, 0);

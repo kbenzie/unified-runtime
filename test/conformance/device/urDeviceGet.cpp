@@ -21,7 +21,7 @@ TEST_F(urDeviceGetTest, Success) {
 }
 
 TEST_F(urDeviceGetTest, SuccessSubsetOfDevices) {
-    uint32_t count;
+    uint32_t count = 0;
     ASSERT_SUCCESS(
         urDeviceGet(platform, UR_DEVICE_TYPE_ALL, 0, nullptr, &count));
     if (count < 2) {
@@ -72,14 +72,14 @@ TEST_P(urDeviceGetTestWithDeviceTypeParam, Success) {
 }
 
 TEST_F(urDeviceGetTest, InvalidNullHandlePlatform) {
-    uint32_t count;
+    uint32_t count = 0;
     ASSERT_EQ_RESULT(
         UR_RESULT_ERROR_INVALID_NULL_HANDLE,
         urDeviceGet(nullptr, UR_DEVICE_TYPE_ALL, 0, nullptr, &count));
 }
 
 TEST_F(urDeviceGetTest, InvalidEnumerationDevicesType) {
-    uint32_t count;
+    uint32_t count = 0;
     ASSERT_EQ_RESULT(
         UR_RESULT_ERROR_INVALID_ENUMERATION,
         urDeviceGet(platform, UR_DEVICE_TYPE_FORCE_UINT32, 0, nullptr, &count));
