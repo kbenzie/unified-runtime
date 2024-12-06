@@ -90,8 +90,9 @@ static std::vector<testParametersFill> test_cases{
     {256, 16},
     {256, 32}};
 
-UUR_TEST_SUITE_P(urEnqueueUSMFillTestWithParam, testing::ValuesIn(test_cases),
-                 printFillTestString<urEnqueueUSMFillTestWithParam>);
+UUR_DEVICE_TEST_SUITE_P(urEnqueueUSMFillTestWithParam,
+                        testing::ValuesIn(test_cases),
+                        printFillTestString<urEnqueueUSMFillTestWithParam>);
 
 TEST_P(urEnqueueUSMFillTestWithParam, Success) {
 

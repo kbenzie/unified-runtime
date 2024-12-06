@@ -25,8 +25,9 @@ struct urPhysicalMemCreateTest
     ur_physical_mem_handle_t physical_mem = nullptr;
 };
 
-UUR_TEST_SUITE_P(urPhysicalMemCreateTest, ::testing::Values(1, 2, 3, 7, 12, 44),
-                 uur::deviceTestWithParamPrinter<size_t>);
+UUR_DEVICE_TEST_SUITE_P(urPhysicalMemCreateTest,
+                        ::testing::Values(1, 2, 3, 7, 12, 44),
+                        uur::deviceTestWithParamPrinter<size_t>);
 
 TEST_P(urPhysicalMemCreateTest, Success) {
     ASSERT_SUCCESS(

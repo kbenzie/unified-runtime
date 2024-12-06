@@ -118,10 +118,11 @@ inline std::string printImageCopyTestString(
     return platform_device_name + "__" + test_name;
 }
 
-UUR_TEST_SUITE_P(urEnqueueMemImageCopyTest,
-                 testing::ValuesIn({UR_MEM_TYPE_IMAGE1D, UR_MEM_TYPE_IMAGE2D,
-                                    UR_MEM_TYPE_IMAGE3D}),
-                 printImageCopyTestString<urEnqueueMemImageCopyTest>);
+UUR_DEVICE_TEST_SUITE_P(urEnqueueMemImageCopyTest,
+                        testing::ValuesIn({UR_MEM_TYPE_IMAGE1D,
+                                           UR_MEM_TYPE_IMAGE2D,
+                                           UR_MEM_TYPE_IMAGE3D}),
+                        printImageCopyTestString<urEnqueueMemImageCopyTest>);
 
 TEST_P(urEnqueueMemImageCopyTest, Success) {
     ASSERT_SUCCESS(urEnqueueMemImageCopy(queue, srcImage, dstImage, {0, 0, 0},

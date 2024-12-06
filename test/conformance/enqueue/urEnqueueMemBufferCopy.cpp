@@ -38,9 +38,9 @@ struct urEnqueueMemBufferCopyTestWithParam : uur::urQueueTestWithParam<size_t> {
 
 static std::vector<size_t> test_parameters{1024, 2500, 4096, 6000};
 
-UUR_TEST_SUITE_P(urEnqueueMemBufferCopyTestWithParam,
-                 ::testing::ValuesIn(test_parameters),
-                 uur::deviceTestWithParamPrinter<size_t>);
+UUR_DEVICE_TEST_SUITE_P(urEnqueueMemBufferCopyTestWithParam,
+                        ::testing::ValuesIn(test_parameters),
+                        uur::deviceTestWithParamPrinter<size_t>);
 
 TEST_P(urEnqueueMemBufferCopyTestWithParam, Success) {
     ASSERT_SUCCESS(urEnqueueMemBufferCopy(queue, src_buffer, dst_buffer, 0, 0,

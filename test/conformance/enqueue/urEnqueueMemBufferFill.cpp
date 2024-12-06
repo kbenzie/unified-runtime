@@ -68,8 +68,9 @@ static std::vector<testParametersFill> test_cases{
     {256, 16},
     {256, 32}};
 
-UUR_TEST_SUITE_P(urEnqueueMemBufferFillTest, testing::ValuesIn(test_cases),
-                 uur::printFillTestString<urEnqueueMemBufferFillTest>);
+UUR_DEVICE_TEST_SUITE_P(urEnqueueMemBufferFillTest,
+                        testing::ValuesIn(test_cases),
+                        uur::printFillTestString<urEnqueueMemBufferFillTest>);
 
 TEST_P(urEnqueueMemBufferFillTest, Success) {
     ASSERT_SUCCESS(urEnqueueMemBufferFill(queue, buffer, pattern.data(),

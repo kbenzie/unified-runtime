@@ -28,7 +28,7 @@ template <typename T>
 inline std::string
 printRectTestString(const testing::TestParamInfo<typename T::ParamType> &info) {
     // ParamType will be std::tuple<ur_device_handle_t, test_parameters_t>
-    const auto device_handle = std::get<0>(info.param);
+    const auto device_handle = std::get<0>(info.param).device;
     const auto platform_device_name = GetPlatformAndDeviceName(device_handle);
     const auto &test_name = std::get<1>(info.param).name;
     return platform_device_name + "__" + test_name;
@@ -172,7 +172,7 @@ struct urMultiQueueMultiDeviceTest : uur::urMultiDeviceContextTestTemplate<1> {
     void SetUp() override {
         UUR_RETURN_ON_FATAL_FAILURE(
             uur::urMultiDeviceContextTestTemplate<1>::SetUp());
-        initQueues(uur::KernelsEnvironment::instance->devices, 1);
+        initQueues(devices, 1);
     }
 
     // Specialized implementation that duplicates all devices and queues

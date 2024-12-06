@@ -166,7 +166,7 @@ struct urEnqueueKernelLaunchIncrementTest
     }
 };
 
-UUR_TEST_SUITE_P(
+UUR_DEVICE_TEST_SUITE_P(
     urEnqueueKernelLaunchIncrementTest,
     testing::ValuesIn(uur::BoolTestParam::makeBoolParam("UseEvents")),
     uur::deviceTestWithParamPrinter<uur::BoolTestParam>);
