@@ -41,19 +41,6 @@ struct urAdapterTest : ::testing::Test,
     ur_adapter_handle_t adapter;
 };
 
-// Inherit this to get the platform/adapter that was selected via the --backend
-// and --platform arguments (or defaulted to if only one platform was
-// discovered)
-struct urSelectedPlatformTest : ::testing::Test {
-    void SetUp() override {
-        platform = uur::PlatformEnvironment::instance->platform;
-        adapter = uur::PlatformEnvironment::instance->adapter;
-    }
-
-    ur_platform_handle_t platform = nullptr;
-    ur_adapter_handle_t adapter = nullptr;
-};
-
 // In the vein of urAdapterTest and urDeviceTest this is a parameterized
 // platform fixture which can be instantiated via
 // UUR_INSTANTIATE_PLATFORM_TEST_SUITE_P to run tests on each discovered

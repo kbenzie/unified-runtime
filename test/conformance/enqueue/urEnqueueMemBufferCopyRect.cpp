@@ -232,8 +232,10 @@ TEST_P(urEnqueueMemBufferCopyRectTest, InvalidNullPtrEventWaitList) {
 
 using urEnqueueMemBufferCopyRectMultiDeviceTest =
     uur::urMultiDeviceMemBufferQueueTest;
+UUR_INSTANTIATE_PLATFORM_TEST_SUITE_P(
+    urEnqueueMemBufferCopyRectMultiDeviceTest);
 
-TEST_F(urEnqueueMemBufferCopyRectMultiDeviceTest, CopyRectReadDifferentQueues) {
+TEST_P(urEnqueueMemBufferCopyRectMultiDeviceTest, CopyRectReadDifferentQueues) {
     // First queue does a fill.
     const uint32_t input = 42;
     ASSERT_SUCCESS(urEnqueueMemBufferFill(queues[0], buffer, &input,

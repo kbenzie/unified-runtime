@@ -132,8 +132,9 @@ TEST_P(urEnqueueMemBufferReadTestWithParam, NonBlocking) {
 
 using urEnqueueMemBufferReadMultiDeviceTest =
     uur::urMultiDeviceMemBufferQueueTest;
+UUR_INSTANTIATE_PLATFORM_TEST_SUITE_P(urEnqueueMemBufferReadMultiDeviceTest);
 
-TEST_F(urEnqueueMemBufferReadMultiDeviceTest, WriteReadDifferentQueues) {
+TEST_P(urEnqueueMemBufferReadMultiDeviceTest, WriteReadDifferentQueues) {
     // First queue does a blocking write of 42 into the buffer.
     std::vector<uint32_t> input(count, 42);
     ASSERT_SUCCESS(urEnqueueMemBufferWrite(queues[0], buffer, true, 0, size,

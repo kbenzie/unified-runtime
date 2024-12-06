@@ -197,8 +197,9 @@ TEST_P(urEnqueueMemBufferFillNegativeTest, InvalidSize) {
 
 using urEnqueueMemBufferFillMultiDeviceTest =
     uur::urMultiDeviceMemBufferQueueTest;
+UUR_INSTANTIATE_PLATFORM_TEST_SUITE_P(urEnqueueMemBufferFillMultiDeviceTest);
 
-TEST_F(urEnqueueMemBufferFillMultiDeviceTest, FillReadDifferentQueues) {
+TEST_P(urEnqueueMemBufferFillMultiDeviceTest, FillReadDifferentQueues) {
     // First queue does a fill.
     const uint32_t input = 42;
     ASSERT_SUCCESS(urEnqueueMemBufferFill(queues[0], buffer, &input,

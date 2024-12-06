@@ -189,8 +189,10 @@ TEST_P(urEnqueueMemBufferReadRectTest, InvalidNullPtrEventWaitList) {
 
 using urEnqueueMemBufferReadRectMultiDeviceTest =
     uur::urMultiDeviceMemBufferQueueTest;
+UUR_INSTANTIATE_PLATFORM_TEST_SUITE_P(
+    urEnqueueMemBufferReadRectMultiDeviceTest);
 
-TEST_F(urEnqueueMemBufferReadRectMultiDeviceTest,
+TEST_P(urEnqueueMemBufferReadRectMultiDeviceTest,
        WriteRectReadDifferentQueues) {
     // First queue does a blocking write of 42 into the buffer.
     // Then a rectangular write the buffer as 1024x1x1 1D.

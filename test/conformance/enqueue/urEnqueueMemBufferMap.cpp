@@ -278,8 +278,9 @@ TEST_P(urEnqueueMemBufferMapTestWithParam, InvalidSize) {
 
 using urEnqueueMemBufferMapMultiDeviceTest =
     uur::urMultiDeviceMemBufferQueueTest;
+UUR_INSTANTIATE_PLATFORM_TEST_SUITE_P(urEnqueueMemBufferMapMultiDeviceTest);
 
-TEST_F(urEnqueueMemBufferMapMultiDeviceTest, WriteMapDifferentQueues) {
+TEST_P(urEnqueueMemBufferMapMultiDeviceTest, WriteMapDifferentQueues) {
     // First queue does a blocking write of 42 into the buffer.
     std::vector<uint32_t> input(count, 42);
     ASSERT_SUCCESS(urEnqueueMemBufferWrite(queues[0], buffer, true, 0, size,
