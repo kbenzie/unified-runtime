@@ -2,8 +2,8 @@
 - hosts: localhost
 
   vars:
-    IGC_VERSION: igc-1.0.17193.4
-    COMPUTE_RUNTIME_VERSION: 24.26.30049.6
+    IGC_VERSION: v2.5.6
+    COMPUTE_RUNTIME_VERSION: 24.52.32224.5
     COMPUTE_RUNTIME_DEBUG_PACKAGES: false
 
   tasks:
@@ -20,7 +20,7 @@
     - name: 'igc: construct query to extract desired release'
       set_fact:
         igc_release_query:
-          '[?contains(name, `{{IGC_VERSION}}`)] | [0]'
+          '[?contains(tag_name, `{{IGC_VERSION}}`)] | [0]'
     - name: 'igc: extract desired release'
       set_fact:
         igc_release: >

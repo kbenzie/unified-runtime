@@ -31,7 +31,7 @@
 - name: '{{package_name}}: construct asset query'
   when: not is_installed or needs_updated
   set_fact:
-    asset_query: '[?contains(name, `{{package_name}}_`)] | [0]'
+    asset_query: '[?contains(name, `{{package_name}}`)] | [0]'
 
 - name: '{{package_name}}: select asset to download'
   when: not is_installed or needs_updated
