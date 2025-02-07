@@ -1,0 +1,13 @@
+---
+- set_fact:
+    DPCPP_DEPENDENCIES_JSON:
+      https://raw.githubusercontent.com/intel/llvm/refs/heads/sycl/devops/dependencies.json
+
+- name: get dependencies.json
+  uri:
+    url: '{{ DPCPP_DEPENDENCIES_JSON }}'
+    return_content: true
+  register: dependencies_result
+
+- set_fact:
+    dependencies: '{{ dependencies_result.content | from_json }}'

@@ -1,13 +1,9 @@
 ---
 - hosts: localhost
 
-  vars:
-    IGC_VERSION: v2.5.6
-    COMPUTE_RUNTIME_VERSION: 24.52.32224.5
-    COMPUTE_RUNTIME_DEBUG_PACKAGES: false
-
   tasks:
-    # TODO: check the operating system is supported
+    - when: dependencies is not defined
+      include_tasks: tasks/dependencies.yaml
 
     - name: get package facts about apt
       package_facts:
@@ -20,7 +16,7 @@
     - name: 'igc: construct query to extract desired release'
       set_fact:
         igc_release_query:
-          '[?contains(tag_name, `{{IGC_VERSION}}`)] | [0]'
+          '[?contains(tag_name, `{{ dependencies.linux.igc.version }}`)] | [0]'
     - name: 'igc: extract desired release'
       set_fact:
         igc_release: >
@@ -28,7 +24,7 @@
     - name: 'igc: ensure we found the desired release'
       assert:
         that: "'name' in igc_release"
-        fail_msg: 'Could not find IGC_VERSION: {{IGC_VERSION}}'
+        fail_msg: 'Could not find IGC version: {{ dependencies.linux.igc.version }}'
     - name: 'igc: install/upgrade packages'
       include_tasks: tasks/intel-igc-package.yaml
       with_items:
@@ -44,7 +40,7 @@
     - name: 'compute-runtime: construct query to extract desired compute runtime release'
       set_fact:
         compute_runtime_release_query:
-          '[?contains(name, `{{COMPUTE_RUNTIME_VERSION}}`)] | [0]'
+          '[?contains(name, `{{ dependencies.linux.compute_runtime.version }}`)] | [0]'
     - name: 'compute-runtime: extract desired compute runtime release'
       set_fact:
         compute_runtime_release: >
@@ -54,20 +50,12 @@
       assert:
         that: "'name' in compute_runtime_release"
         fail_msg:
-          'Could not find COMPUTE_RUNTIME_VERSION: {{COMPUTE_RUNTIME_VERSION}}'
+          'Could not find compute-runtime version: {{ dependencies.linux.compute_runtime.version }}'
     - name: 'compute-runtime: install/upgrade packages'
       include_tasks: tasks/intel-compute-runtime-package.yaml
       with_items:
         - libigdgmm12
         - intel-level-zero-gpu
         - intel-opencl-icd
-      loop_control:
-        loop_var: package_name
-    - name: 'compute-runtime: install/upgrade debug symbol packages'
-      when: COMPUTE_RUNTIME_DEBUG_PACKAGES
-      include_tasks: tasks/intel-compute-runtime-package.yaml
-      with_items:
-        - intel-level-zero-gpu-dbgsym
-        - intel-opencl-icd-dbgsym
       loop_control:
         loop_var: package_name

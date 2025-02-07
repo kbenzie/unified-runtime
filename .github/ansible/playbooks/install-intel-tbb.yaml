@@ -1,19 +1,9 @@
 ---
 - hosts: localhost
 
-  vars:
-    DPCPP_DEPENDENCIES_JSON:
-      https://raw.githubusercontent.com/intel/llvm/refs/heads/sycl/devops/dependencies.json
-
   tasks:
-    - name: get dependencies.json
-      uri:
-        url: '{{ DPCPP_DEPENDENCIES_JSON }}'
-        return_content: true
-      register: dependencies_result
-
-    - set_fact:
-        dependencies: '{{ dependencies_result.content | from_json }}'
+    - when: dependencies is not defined
+      include_tasks: tasks/dependencies.yaml
 
     - name: create /opt/intel
       become: true
