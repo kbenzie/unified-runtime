@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: remove library path config
+      become: true
+      file:
+        state: absent
+        path: /etc/ld.so.conf.d/libintelopenclexp.conf
+
+    - name: remove opencl icd file
+      become: true
+      file:
+        state: absent
+        path: /etc/OpenCL/vendors/intel_expcpu.icd
+
+    - find:
+        paths: /opt/intel
+        patterns: 'oclcpuexp*'
+        file_type: directory
+      register: found_oclcpus
+
+    - set_fact:
+        oclcpus_to_remove: >
+          {{
+            found_oclcpus.files |
+            map(attribute='path') |
+            list
+          }}
+
+    - name: remove oclcpu installs
+      become: true
+      file:
+        state: absent
+        path: '{{item}}'
+      with_items: '{{oclcpus_to_remove}}'

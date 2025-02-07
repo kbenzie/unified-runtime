@@ -1,18 +1,102 @@
 ---
+- import_playbook: install-intel-tbb.yaml
+
 - hosts: localhost
 
-  vars:
-    # The tag of a release from https://github.com/intel/llvm/releases with the
-    # name "oneAPI DPC++ Compiler dependencies"
-    INTEL_LLVM_DEPS_TAG: 2023-WW27
-    # TODO: "url": "https://github.com/oneapi-src/oneTBB/releases/download/v2021.10.0/oneapi-tbb-2021.10.0-lin.tgz",
-    ONETBB_VERSION: 2021.10.0
-
   tasks:
-    # TODO: check the operating system is supported
+    - assert:
+        that: dependencies is defined
 
-    - name: install intel opencl cpu driver
-      include_tasks: tasks/intel-opencl-cpu.yaml
+    - find:
+        paths: /opt/intel
+        patterns: 'oclcpuexp*'
+        file_type: directory
+      register: found_oclcpus
 
-    - name: install intel onetbb library
-      include_tasks: tasks/intel-onetbb.yaml
+    - set_fact:
+        oclcpu_archive:
+          /opt/intel/oclcpuexp_{{ dependencies.linux.oclcpu.version }}.tar.gz
+        oclcpu_dir:
+          /opt/intel/oclcpuexp_{{ dependencies.linux.oclcpu.version }}
+
+    - set_fact:
+        oclcpus_to_remove: >
+          {{
+            found_oclcpus.files |
+            map(attribute='path') |
+            reject('equalto', oclcpu_dir) |
+            list
+          }}
+
+    - name: remove old oclcpu installs
+      become: true
+      file:
+        state: absent
+        path: '{{item}}'
+      with_items: '{{oclcpus_to_remove}}'
+
+    - stat:
+        path: '{{ oclcpu_dir }}'
+      register: oclcpu_dir_stat
+
+    - set_fact:
+        install_oclcpu: '{{ not oclcpu_dir_stat.stat.exists }}'
+
+    - name: download oclcpu archive
+      when: install_oclcpu
+      become: true
+      get_url:
+        url: '{{ dependencies.linux.oclcpu.url }}'
+        dest: '{{ oclcpu_archive }}'
+
+    - name: create oclcpu install directory
+      when: install_oclcpu
+      become: true
+      file:
+        state: directory
+        path: '{{ oclcpu_dir }}'
+
+    - name: install oclcpu
+      when: install_oclcpu
+      become: true
+      unarchive:
+        src: '{{ oclcpu_archive }}'
+        dest: '{{ oclcpu_dir }}'
+
+    - name: remove oclcpu archive
+      become: true
+      file:
+        state: absent
+        path: '{{ oclcpu_archive }}'
+
+    - name: create opencl icd file
+      become: true
+      copy:
+        content: |
+          {{ oclcpu_dir }}/x64/libintelocl.so
+        dest: /etc/OpenCL/vendors/intel_expcpu.icd
+
+    - name: create tbb symlinks
+      become: true
+      file:
+        state: link
+        src: '{{ tbb_dir }}/lib/intel64/gcc4.8/{{item}}'
+        dest: '{{ oclcpu_dir }}/x64/{{item}}'
+      with_items:
+        - libtbb.so
+        - libtbbmalloc.so
+        - libtbb.so.12
+        - libtbbmalloc.so.2
+
+    - name: create library path config
+      become: true
+      copy:
+        content: |
+          {{ oclcpu_dir }}/x64
+        dest: /etc/ld.so.conf.d/libintelopenclexp.conf
+      notify: ldconfig
+
+  handlers:
+    - name: ldconfig
+      become: true
+      command: ldconfig -f /etc/ld.so.conf.d/libintelopenclexp.conf
