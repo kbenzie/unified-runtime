@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+
+  tasks:
+    # TODO: make this work for oclfpgaemu and oclcpu
+    - name: remove library path config
+      become: true
+      file:
+        state: absent
+        path: /etc/ld.so.conf.d/libintelopenclexp.conf
+
+    - name: remove opencl icd file
+      become: true
+      file:
+        state: absent
+        path: /etc/OpenCL/vendors/intel_fpgaemu.icd
+
+    - find:
+        paths: /opt/intel
+        patterns: 'oclfpgaemu*'
+        file_type: directory
+      register: found_oclfpgaemus
+
+    - set_fact:
+        oclfpgaemus_to_remove: >
+          {{
+            found_oclfpgaemus.files |
+            map(attribute='path') |
+            list
+          }}
+
+    - name: remove oclfpgaemu installs
+      become: true
+      file:
+        state: absent
+        path: '{{item}}'
+      with_items: '{{oclfpgaemus_to_remove}}'

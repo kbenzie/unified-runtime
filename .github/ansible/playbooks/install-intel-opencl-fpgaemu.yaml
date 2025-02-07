@@ -1,0 +1,103 @@
+---
+- import_playbook: install-intel-tbb.yaml
+
+- hosts: localhost
+
+  tasks:
+    - assert:
+        that: dependencies is defined
+
+    - find:
+        paths: /opt/intel
+        patterns: 'oclfpgaemu*'
+        file_type: directory
+      register: found_oclfpgaemus
+
+    - set_fact:
+        oclfpgaemu_archive:
+          /opt/intel/oclfpgaemu_{{ dependencies.linux.fpgaemu.version }}.tar.gz
+        oclfpgaemu_dir:
+          /opt/intel/oclfpgaemu_{{ dependencies.linux.fpgaemu.version }}
+
+    - set_fact:
+        oclfpgaemus_to_remove: >
+          {{
+            found_oclfpgaemus.files |
+            map(attribute='path') |
+            reject('equalto', oclfpgaemu_dir) |
+            list
+          }}
+
+    - name: remove old oclfpgaemu installs
+      become: true
+      file:
+        state: absent
+        path: '{{item}}'
+      with_items: '{{oclfpgaemus_to_remove}}'
+
+    - stat:
+        path: '{{ oclfpgaemu_dir }}'
+      register: oclfpgaemu_dir_stat
+
+    - set_fact:
+        install_oclfpgaemu: '{{ not oclfpgaemu_dir_stat.stat.exists }}'
+
+    - name: download oclfpgaemu archive
+      when: install_oclfpgaemu
+      become: true
+      get_url:
+        url: '{{ dependencies.linux.fpgaemu.url }}'
+        dest: '{{ oclfpgaemu_archive }}'
+
+    - name: create oclfpgaemu install directory
+      when: install_oclfpgaemu
+      become: true
+      file:
+        state: directory
+        path: '{{ oclfpgaemu_dir }}'
+
+    - name: install oclfpgaemu
+      when: install_oclfpgaemu
+      become: true
+      unarchive:
+        src: '{{ oclfpgaemu_archive }}'
+        dest: '{{ oclfpgaemu_dir }}'
+
+    - name: remove oclfpgaemu archive
+      become: true
+      file:
+        state: absent
+        path: '{{ oclfpgaemu_archive }}'
+
+    - name: create opencl icd file
+      become: true
+      copy:
+        content: |
+          {{ oclfpgaemu_dir }}/x64/libintelocl_emu.so
+        dest: /etc/OpenCL/vendors/intel_fpgaemu.icd
+
+    - name: create tbb symlinks
+      become: true
+      file:
+        state: link
+        src: '{{ tbb_dir }}/lib/intel64/gcc4.8/{{item}}'
+        dest: '{{ oclfpgaemu_dir }}/x64/{{item}}'
+      with_items:
+        - libtbb.so
+        - libtbbmalloc.so
+        - libtbb.so.12
+        - libtbbmalloc.so.2
+
+  # TODO: make this work for oclfpgaemu and oclcpu
+  #   - name: create library path config
+  #     become: true
+  #     copy:
+  #       content: |
+  #         {{ oclfpgaemu_dir }}/x64
+  #       dest: /etc/ld.so.conf.d/libintelopenclexp.conf
+  #     notify: ldconfig
+
+  # handlers:
+  #   - name: ldconfig
+  #     become: true
+  #     command: ldconfig -f /etc/ld.so.conf.d/libintelopenclexp.conf
