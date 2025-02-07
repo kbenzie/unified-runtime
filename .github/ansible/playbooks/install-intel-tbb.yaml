@@ -1,0 +1,77 @@
+---
+- hosts: localhost
+
+  vars:
+    DPCPP_DEPENDENCIES_JSON:
+      https://raw.githubusercontent.com/intel/llvm/refs/heads/sycl/devops/dependencies.json
+
+  tasks:
+    - name: get dependencies.json
+      uri:
+        url: '{{ DPCPP_DEPENDENCIES_JSON }}'
+        return_content: true
+      register: dependencies_result
+
+    - set_fact:
+        dependencies: '{{ dependencies_result.content | from_json }}'
+
+    - name: create /opt/intel
+      become: true
+      file:
+        state: directory
+        path: /opt/intel
+
+    - find:
+        paths: /opt/intel
+        patterns: 'oneapi-tbb-*'
+        file_type: directory
+      register: found_tbbs
+
+    - set_fact:
+        tbb_archive:
+          /opt/intel/oneapi-tbb-{{ dependencies.linux.tbb.version }}.tar.gz
+        tbb_dir:
+          /opt/intel/oneapi-tbb-{{ dependencies.linux.tbb.version }}
+
+    - set_fact:
+        tbbs_to_remove: >
+          {{
+            found_tbbs.files |
+            map(attribute='path') |
+            reject('equalto', tbb_dir) |
+            list
+          }}
+
+    - name: remove old tbb installs
+      become: true
+      file:
+        state: absent
+        path: '{{item}}'
+      with_items: '{{tbbs_to_remove}}'
+
+    - stat:
+        path: '{{tbb_dir}}'
+      register: tbb_dir_stat
+
+    - set_fact:
+        install_tbb: '{{ not tbb_dir_stat.stat.exists }}'
+
+    - name: download tbb archive
+      when: install_tbb
+      become: true
+      get_url:
+        url: '{{ dependencies.linux.tbb.url }}'
+        dest: '{{ tbb_archive }}'
+
+    - name: install tbb
+      when: install_tbb
+      become: true
+      unarchive:
+        src: '{{ tbb_archive }}'
+        dest: /opt/intel
+
+    - name: remove tbb archive
+      become: true
+      file:
+        state: absent
+        path: '{{ tbb_archive }}'

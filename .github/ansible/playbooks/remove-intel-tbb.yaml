@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+
+  tasks:
+    - find:
+        paths: /opt/intel
+        patterns: 'oneapi-tbb-*'
+        file_type: directory
+      register: found_tbbs
+
+    - set_fact:
+        tbbs_to_remove: >
+          {{
+            found_tbbs.files |
+            map(attribute='path') |
+            list
+          }}
+
+    - name: remove tbb installs
+      become: true
+      file:
+        state: absent
+        path: '{{item}}'
+      with_items: '{{tbbs_to_remove}}'
