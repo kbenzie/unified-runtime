@@ -30,3 +30,7 @@ To remove these packages, use the following command.
 ```console
 $ ansible-playbook playbooks/remove-intel-opencl-level-zero-gpu.yaml --ask-become-pass
 ```
+
+> Note: To override the default intel/llvm ref of `refs/heads/sycl` use the
+> `DPCXX_REF` environment variable, accepts any ref that works with a GitHub
+> raw content URL, e.g. a commit or `refs/heads/<branch-name>`.

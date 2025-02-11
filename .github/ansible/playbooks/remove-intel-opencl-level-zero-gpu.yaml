@@ -7,7 +7,9 @@
       apt:
         name:
           - intel-igc-core
+          - intel-igc-core-2
           - intel-igc-opencl
+          - intel-igc-opencl-2
           - libigdgmm12
           - intel-level-zero-gpu
           - intel-opencl-icd

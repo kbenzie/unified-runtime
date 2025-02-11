@@ -1,7 +1,10 @@
 ---
 - set_fact:
+    DPCPP_REF: "{{ lookup('env', 'DPCXX_REF', default='refs/heads/sycl') }}"
+
+- set_fact:
     DPCPP_DEPENDENCIES_JSON:
-      https://raw.githubusercontent.com/intel/llvm/refs/heads/sycl/devops/dependencies.json
+      https://raw.githubusercontent.com/intel/llvm/{{DPCPP_REF}}/devops/dependencies.json
 
 - name: get dependencies.json
   uri:
